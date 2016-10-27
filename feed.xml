@@ -1,0 +1,1207 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>kdee.co.za</title>
+    <description>my portfolio site ... my little corner where i can play and just hang out.
+</description>
+    <link>https://kdee15.github.io/</link>
+    <atom:link href="https://kdee15.github.io/feed.xml" rel="self" type="application/rss+xml"/>
+    <pubDate>Thu, 27 Oct 2016 20:07:26 +0200</pubDate>
+    <lastBuildDate>Thu, 27 Oct 2016 20:07:26 +0200</lastBuildDate>
+    <generator>Jekyll v3.1.6</generator>
+    
+      <item>
+        <title>OSX El Capitan LAMP Stack</title>
+        <description>&lt;h1&gt;LAMP Stack on Mac OS X Yosemite using homebrew&lt;/h1&gt;
+
+&lt;h2&gt;Step 1: install homebrew&lt;/h2&gt;
+&lt;p&gt;run the following command in terminal&lt;/p&gt;
+
+&lt;p class=&quot;you-type&quot;&gt;
+    
+    ruby -e &quot;$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)&quot;
+
+&lt;/p&gt;
+
+&lt;p&gt;once that has completed, run the following commands in terminal&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;brew doctor&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Fix any errors. ( DO NOT SKIP THIS PART! )&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;brew update&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2&gt;Step 2: daemons&lt;/h2&gt;
+&lt;p&gt;Install lunchy (for starting and stopping daemons)&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo gem install lunchy&lt;/span&gt;&lt;/p&gt;
+&lt;h3&gt;a side note about daemons&lt;/h3&gt;
+&lt;p&gt;Mac OS X relies on launchctl to start and stop services. It is similar to init.d in linux, or service in Ubuntu. lunchy is a wrapper for launchctl. It makes it easier to start and stop services. Services that are owned by root have init scripts in /Library/LaunchDaemons. To start and stop these services using lunchy, you must use sudo. Services owned by the user have init scripts in ~/Library/LaunchAgents/. Lunchy does not require sudo to start and stop these services.&lt;/p&gt;
+
+&lt;h2&gt;Step 3: PHP&lt;/h2&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;brew tap homebrew/dupes&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;brew tap josegonzalez/homebrew-php&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;warning&quot;&gt;
+    &amp;lt;h3&amp;gt;!!!!! NB !!!!!&amp;lt;/h3&amp;gt;
+    &amp;lt;p&amp;gt;please note the version of PHP you are installing. For this document, we will use an X which you need to change to the version you have chosen to install&amp;lt;/p&amp;gt;
+    &amp;lt;h3&amp;gt;!!!!! NB !!!!!&amp;lt;/h3&amp;gt;
+&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;brew install php5&lt;b class=&quot;red&quot;&gt;X&lt;/b&gt;&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;Install useful PHP extensions (using brew)&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;brew install php5&lt;b class=&quot;red&quot;&gt;X&lt;/b&gt;-xdebug&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2&gt;Step 4: MySQL (MariaDB)&lt;/h2&gt;
+&lt;p&gt;MariaDB is an optimized fork of MySQL. It works great as a drop-in replacement for the standard version of MySQL. If you would rather not use MariaDB you can do all of these same steps, just replace the word mariadb with the word mysql.&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;brew install mariadb&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;the following commands you just copy and paste and they make it work&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;cp $(brew --prefix mariadb)/support-files/my-large.cnf /usr/local/etc/my.cnf&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sed -i &quot;&quot; &#39;s/max_allowed_packet = 1.*M/max_allowed_packet = 32M/g&#39; /usr/local/etc/my.cnf&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;cp /usr/local/opt/mariadb/homebrew.mxcl.mariadb.plist ~/Library/LaunchAgents/&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;mysql_install_db --verbose --user=`whoami` --basedir=&quot;$(brew --prefix mariadb)&quot; --datadir=/usr/local/var/mysql --tmpdir=/tmp&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mariadb.plist&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;warning&quot;&gt;
+    &amp;lt;h3&amp;gt;!!!!! NB !!!!!&amp;lt;/h3&amp;gt;
+    &amp;lt;p&amp;gt;replace the &lt;b class=&quot;red&quot;&gt;XXX&lt;/b&gt; below with the password you want to use as your root password for MySQL&amp;lt;/p&amp;gt;
+    &amp;lt;h3&amp;gt;!!!!! NB !!!!!&amp;lt;/h3&amp;gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;mysqladmin -uroot password &#39;&lt;b class=&quot;red&quot;&gt;XXX&lt;/b&gt;&#39;&lt;/span&gt;&lt;/p&gt;
+
+&lt;h3&gt;linking php and mysql&lt;/h3&gt;
+&lt;p&gt;a fix to enable php and mysql to get along ...&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo mkdir /var/mysql&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo ln -s /tmp/mysql.sock /var/mysql/mysql.sock&lt;/span&gt;&lt;/p&gt;
+
+&lt;h2&gt;Step 5: Apache&lt;/h2&gt;
+&lt;p&gt;OK, so here is where things get all crazy!!! The previous 4 steps were pretty straight forward, and if you followed them, closely, you should see a nice &quot;It works&quot; when you browse to &quot;http://localhost&quot; in your browser. the next steps will allow you to browse to sites in your defined sites folder, which we will call &quot;Sites&quot;&lt;/p&gt;
+
+&lt;p&gt;You need to make a &quot;Sites&quot; folder at the root level of your account and then it will work. Once you make the Sites folder you will notice that it has a unique icon which is a throwback from a few versions older. Make that folder before you set up the user configuration file described next.&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;warning&quot;&gt;
+    &amp;lt;h3&amp;gt;!!!!! NB !!!!!&amp;lt;/h3&amp;gt;
+    &amp;lt;p&amp;gt;replace the &lt;b class=&quot;red&quot;&gt;username&lt;/b&gt; below with your pc user name.&amp;lt;/p&amp;gt;
+    &amp;lt;p&amp;gt;replace the &lt;b class=&quot;red&quot;&gt;XXX&lt;/b&gt; below with any server name.&amp;lt;/p&amp;gt;
+    &amp;lt;h3&amp;gt;!!!!! NB !!!!!&amp;lt;/h3&amp;gt;
+&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo touch /etc/apache2/users/&lt;b class=&quot;red&quot;&gt;username&lt;/b&gt;.conf&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo nano /etc/apache2/users/&lt;b class=&quot;red&quot;&gt;username&lt;/b&gt;.conf&lt;/span&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+&lt;code class=&quot;apache&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ServerName&lt;/span&gt;&lt;/span&gt; &lt;b class=&quot;red&quot;&gt;XXX&lt;/b&gt;
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;DocumentRoot&lt;/span&gt;&lt;/span&gt; /Users/&lt;b class=&quot;red&quot;&gt;username&lt;/b&gt;/Sites
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;UseCanonicalName&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;&lt;span class=&quot;literal&quot;&gt;Off&lt;/span&gt;&lt;/span&gt;
+
+        &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;Directory &quot;/Users/&lt;b class=&quot;red&quot;&gt;username&lt;/b&gt;/Sites&quot;&amp;gt;&lt;/span&gt;&lt;/span&gt;
+            &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;AllowOverride&lt;/span&gt;&lt;/span&gt; All
+            &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Options&lt;/span&gt;&lt;/span&gt; Indexes MultiViews
+            &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Options&lt;/span&gt;&lt;/span&gt; +FollowSymLinks
+            &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;Require&lt;/span&gt;&lt;/span&gt; all granted
+        &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/Directory&amp;gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;&lt;/span&gt;
+&lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Next you need to edit some files ... this is where Yosemite differs from previous setups. In terminal, edit your httpd.conf file and uncomment the entries as indicated below. In nano, you can search for these by pressing &quot;CTRL&quot; + &quot;w&quot;&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo nano /etc/apache2/httpd.conf&lt;/span&gt;&lt;/p&gt;
+&lt;p&gt;LoadModule authz_core_module libexec/apache2/mod_authz_core.so&lt;/p&gt;
+&lt;p&gt;LoadModule authz_host_module libexec/apache2/mod_authz_host.so&lt;/p&gt;
+&lt;p&gt;LoadModule userdir_module libexec/apache2/mod_userdir.so&lt;/p&gt;
+&lt;p&gt;LoadModule rewrite_module libexec/apache2/mod_rewrite.so&lt;/p&gt;
+&lt;p&gt;LoadModule php5_module libexec/apache2/libphp5.so&lt;/p&gt;
+&lt;p&gt;also, further down ...&lt;/p&gt;
+&lt;p&gt;Include /private/etc/apache2/extra/httpd-vhosts.conf&lt;/p&gt;
+&lt;p&gt;Include /private/etc/apache2/extra/httpd-userdir.conf&lt;/p&gt;
+
+&lt;pre&gt;
+    &lt;code class=&quot;apache&quot;&gt;
+        &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;MultiviewsMatch Any&lt;/span&gt;&lt;/span&gt;
+        
+        &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;#&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;#&lt;/span&gt;&lt;/span&gt; AllowOverride controls what directives may be placed in .htaccess files.
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;#&lt;/span&gt;&lt;/span&gt; It can be &quot;All&quot;, &quot;None&quot;, or any combination of the keywords:
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;#&lt;/span&gt;&lt;/span&gt; AllowOverride FileInfo AuthConfig Limit
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;#&lt;/span&gt;&lt;/span&gt;
+        
+        &lt;span class=&quot;literal&quot;&gt;&lt;span class=&quot;literal&quot;&gt;AllowOverride All&lt;/span&gt;&lt;/span&gt;
+
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;#&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;#&lt;/span&gt;&lt;/span&gt; Controls who can get stuff from this server.
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;#&lt;/span&gt;&lt;/span&gt;
+    &lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Save your conf file by pressing &quot;CTRL&quot; + &quot;x&quot;, then &quot;y&quot;, then &quot;ENTER&quot;&lt;/p&gt;
+&lt;p&gt;next, we edit the http-vhosts.conf file&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo nano /etc/apache2/extra/httpd-vhosts.conf&lt;/span&gt;&lt;/p&gt;
+
+&lt;pre&gt;
+    &lt;code class=&quot;apache&quot;&gt;
+    &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;VirtualHost *:80&amp;gt;&lt;/span&gt;&lt;/span&gt;
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;ServerName&lt;/span&gt;&lt;/span&gt; &lt;b class=&quot;red&quot;&gt;XXX&lt;/b&gt;
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;VirtualDocumentRoot&lt;/span&gt;&lt;/span&gt; &quot;/Users/&lt;b class=&quot;red&quot;&gt;username&lt;/b&gt;/Sites&quot;
+        &lt;span class=&quot;keyword&quot;&gt;&lt;span class=&quot;keyword&quot;&gt;UseCanonicalName&lt;/span&gt;&lt;/span&gt; &lt;span class=&quot;literal&quot;&gt;&lt;span class=&quot;literal&quot;&gt;Off&lt;/span&gt;&lt;/span&gt;
+    &lt;span class=&quot;tag&quot;&gt;&lt;span class=&quot;tag&quot;&gt;&amp;lt;/VirtualHost&amp;gt;&lt;/span&gt;&lt;/span&gt;
+    &lt;/code&gt;
+&lt;/pre&gt;
+
+&lt;p&gt;Restart Apache&lt;/p&gt;
+&lt;p&gt;&lt;span class=&quot;you-type&quot;&gt;sudo apachectl restart&lt;/span&gt;&lt;/p&gt;
+
+&lt;h5&gt;References&lt;/h5&gt;
+
+&lt;ul&gt;
+    
+    &lt;li&gt;http://www.astonishdesign.com/blog/native-lamp-stack-mac-os-x&lt;/li&gt;
+    &lt;li&gt;http://coolestguidesontheplanet.com/get-apache-mysql-php-phpmyadmin-working-osx-10-10-yosemite/&lt;/li&gt;
+    &lt;li&gt;http://coolestguidesontheplanet.com/set-virtual-hosts-apache-mac-osx-10-9-mavericks-osx-10-8-mountain-lion/&lt;/li&gt;
+
+&lt;/ul&gt;
+
+&lt;style&gt;
+
+    .you-type   {border: 1px solid green; display: block; background: #F4F4F4; width: 98%; padding:10px 1%; overflow: auto; white-space: nowrap;}
+    pre         {width:100%; overflow: auto;}
+
+&lt;/style&gt;
+
+</description>
+        <pubDate>Tue, 28 Jun 2016 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/blog/2016/06/28/osx-lamp-stack/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/blog/2016/06/28/osx-lamp-stack/</guid>
+        
+        
+        <category>blog</category>
+        
+      </item>
+    
+      <item>
+        <title>Tonplaygo</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;tonplaygo&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;AUG&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2015&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;Tonplaygo&lt;/h2&gt;
+                &lt;h3&gt;Tonplaygo is a free mobile entertainment and gaming platform, built around a tangible connection to fashion and high-tech brands.&lt;/h3&gt;
+                &lt;p&gt;Android, iOS App &amp;amp; website.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;AngularJS, HTML(5), CSS, JQuery, Cordova, X-Code, Gulp&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;UI/UX consulting&lt;/li&gt;
+                    &lt;li&gt;Development team lead&lt;/li&gt;
+                    &lt;li&gt;Frontend development &amp;amp; implementation&lt;/li&gt;
+                    &lt;li&gt;Play &amp;amp; App Store submissions&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;PRE&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;SENT&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-4&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-4.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-5&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-5.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-6&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-6.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-7&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-7.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-8&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/tpg-8.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                    
+                &lt;/hcard&gt;
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 01 Feb 2016 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2016/02/01/tonplaygo/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2016/02/01/tonplaygo/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>IntelleApp</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;intelleapp&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;NOV&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2015&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;IntelleApp&lt;/h2&gt;
+                &lt;h3&gt;STEM content &amp;amp; learning portal for high school students&lt;/h3&gt;
+                &lt;p&gt;Android, iOS App &amp;amp; website.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;AngularJS, HTML(5), CSS, JQuery, Cordova, X-Code, Gulp&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;UI/UX consulting&lt;/li&gt;
+                    &lt;li&gt;Development team lead&lt;/li&gt;
+                    &lt;li&gt;Frontend development &amp;amp; implementation&lt;/li&gt;
+                    &lt;li&gt;Play &amp;amp; App Store submissions&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;PRE&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;SENT&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;desk&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/intelleapp-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/intelleapp-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/intelleapp-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-4&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/intelleapp-4.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 01 Dec 2015 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2015/12/01/intelleapp/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2015/12/01/intelleapp/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>Colourworks</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;colourworks&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;MAY&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2014&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;Colourworks&lt;/h2&gt;
+                &lt;h3&gt;client public facing website&lt;/h3&gt;
+                &lt;p&gt;Public facing website for Colourworks, a strategic brand experiences and creative marketing company.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;wordpress, HTML(5), CSS, JQuery, Gulp&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Custom wordpress theming&lt;/li&gt;
+                    &lt;li&gt;HTML/CSS/JQuery implementation&lt;/li&gt;
+                    &lt;li&gt;assisted with UI/UX development&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;JUL&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;2015&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-4.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-5.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-6.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-7.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-8.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-9.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-10.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-11.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-12.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-13.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-14.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-15.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/cw-16.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Wed, 01 Jul 2015 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2015/07/01/colourworks/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2015/07/01/colourworks/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>Navigator Films</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;navigator&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;OCT&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2014&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;Navigator Films&lt;/h2&gt;
+                &lt;h3&gt;client public facing website&lt;/h3&gt;
+                &lt;p&gt;Public facing website for Navigator Films, a film studio, and production company.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;wordpress, HTML(5), CSS, JQuery, Gulp&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;Custom wordpress theming&lt;/li&gt;
+                    &lt;li&gt;HTML/CSS/JQuery implementation&lt;/li&gt;
+                    &lt;li&gt;assisted with UI/UX development&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;JAN&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;2015&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/nav-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/nav-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/nav-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/nav-4.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/nav-5.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/nav-6.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/navigator-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/navigator-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/navigator-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/navigator-4.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/navigator-5.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Mon, 01 Jun 2015 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2015/06/01/navigator/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2015/06/01/navigator/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>Sports Junction</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;stj&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;AUG&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2014&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;Sports Junction&lt;/h2&gt;
+                &lt;h3&gt;St John’s College student activity manager&lt;/h3&gt;
+                &lt;p&gt;Android and iOS app, and mobi site for parents, students and teachers to manage student activity.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;AngularJS, HTML(5), CSS, JQuery, Gulp&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;UI/UX assistance &amp;amp; wireframing&lt;/li&gt;
+                    &lt;li&gt;App frontend UI design and implementation&lt;/li&gt;
+                    &lt;li&gt;Admin Console desktop frontend UI design&lt;/li&gt;
+                    &lt;li&gt;Admin Console desktop frontend implementation&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;JUN&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;2015&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-4&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-4.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-5&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-5.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-6&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-6.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-7&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-7.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card mobi&quot;&gt;
+                    &lt;div id=&quot;pic-8&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-8.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                    
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-6&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-9.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-7&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/stj-10.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sun, 01 Mar 2015 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2015/03/01/stj/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2015/03/01/stj/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>USB</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;usb&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;OCT&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2012&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;University of Stellenbosch&lt;/h2&gt;
+                &lt;h3&gt;business school project&lt;/h3&gt;
+                &lt;p&gt;USB staff &amp;amp; student intranet, USB public facing website as well as Belpark Campus portal.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;sharepoint 2010, HTML(5), CSS, JQuery&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;UI/UX consulting&lt;/li&gt;
+                    &lt;li&gt;visual conceptualisation consulting&lt;/li&gt;
+                    &lt;li&gt;lead sharepoint CMS developer&lt;/li&gt;
+                    &lt;li&gt;HTML/CSS/JQuery implementation&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;APR&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;2014&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/usb-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/usb-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/usb-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 01 Apr 2014 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2014/04/01/usb/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2014/04/01/usb/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>USB-Ed</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;usb-ed&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;OCT&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2012&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;University of Stellenbosch&lt;/h2&gt;
+                &lt;h3&gt;executive development public facing website&lt;/h3&gt;
+                &lt;p&gt;Public facing website for USB-Ed, a division of the University of Stellenbosch Business School&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;sharepoint 2010, HTML(5), CSS, JQuery&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;UI/UX consulting&lt;/li&gt;
+                    &lt;li&gt;visual conceptualisation consulting&lt;/li&gt;
+                    &lt;li&gt;lead sharepoint CMS developer&lt;/li&gt;
+                    &lt;li&gt;HTML/CSS/JQuery implementation&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;APR&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;2014&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/usbed-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/usbed-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/usbed-3.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-3&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/usbed-4.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Tue, 01 Apr 2014 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2014/04/01/usb-ed/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2014/04/01/usb-ed/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>V&amp;A Waterfront</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;waterfront&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;JAN&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2010&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;V&amp;amp;A Waterfront&lt;/h2&gt;
+                &lt;h3&gt;Public facing website for the V&amp;amp;A Waterfront.&lt;/h3&gt;
+                &lt;p&gt;At that time, this was Airborne&#39;s biggest sharepoint implementation.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;Sharepoint 2007, HTML(5), CSS, JQuery&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;sharepoint CMS developer&lt;/li&gt;
+                    &lt;li&gt;Jquery implementation&lt;/li&gt;
+                    &lt;li&gt;Customised blog masterpages &amp;amp; implemented blogging module&lt;/li&gt;
+                    &lt;li&gt;Support &amp;amp; maintenance&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;OCT&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;2013&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/waterfront-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/waterfront-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Thu, 01 Aug 2013 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2013/08/01/waterfront/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2013/08/01/waterfront/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+      <item>
+        <title>Old Mutual</title>
+        <description>&lt;!--- C.3. CONTENT AREA ------------------------------------------------------------------------------------------- --&gt;
+
+&lt;section class=&quot;project&quot; id=&quot;om&quot;&gt;
+
+    &lt;!--- C.3.1. Project Details --&gt;
+    
+    &lt;aside class=&quot;column-1&quot;&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;start&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;span&gt;SEP&lt;/span&gt;&lt;br /&gt;
+                &lt;span&gt;2011&lt;/span&gt;
+            &lt;/div&gt;
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;big square item&quot; id=&quot;info&quot;&gt;
+            &lt;div class=&quot;content&quot;&gt;
+                &lt;h2&gt;Old Mutual&lt;/h2&gt;
+                &lt;h3&gt;colmex and  greenlight uk&lt;/h3&gt;
+                &lt;p&gt;Old Mutual Life Products launched in South America, and the Greenlight Project intended for the UK.&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;nuts &amp;amp; bolts:&lt;/strong&gt;&lt;/p&gt;
+                &lt;p&gt;microsoft MVC (ASP.NET), with HTML frontend&lt;/p&gt;
+                &lt;p&gt;&lt;strong&gt;my role:&lt;/strong&gt;&lt;/p&gt;
+                &lt;ul&gt;
+                    &lt;li&gt;UI/UX assistance&lt;/li&gt;
+                    &lt;li&gt;visual conceptualisation consulting&lt;/li&gt;
+                    &lt;li&gt;lead frontend developer&lt;/li&gt;
+                    &lt;li&gt;HTML/CSS/JQuery implementation&lt;/li&gt;
+                &lt;/ul&gt;
+            &lt;/div&gt;    
+        &lt;/aside&gt;
+
+        &lt;aside class=&quot;square item&quot; id=&quot;end&quot;&gt;
+            &lt;div class=&quot;inner&quot;&gt;
+                &lt;div class=&quot;content&quot;&gt;
+                    &lt;span&gt;SEP&lt;/span&gt;&lt;br /&gt;
+                    &lt;span&gt;2012&lt;/span&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;  
+        &lt;/aside&gt;
+    
+    &lt;/aside&gt;
+    
+    &lt;!--- C.3.2. Project Images --&gt;
+    
+    &lt;aside class=&quot;column-2&quot;&gt;
+    
+        &lt;div class=&quot;row-1&quot;&gt;
+        
+            &lt;hscroller class=&quot;hscroller&quot;&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-1&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/om-1.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+                &lt;hcard class=&quot;hscroller-card&quot;&gt;
+                    &lt;div id=&quot;pic-2&quot; class=&quot;mobile&quot;&gt;
+                        &lt;img class=&quot;&quot; src=&quot;https://kdee15.github.io/assets/images/work/pics/om-2.jpg&quot; /&gt;
+                    &lt;/div&gt;
+                &lt;/hcard&gt;
+
+            &lt;/hscroller&gt;
+            
+        &lt;/div&gt;
+
+    &lt;/aside&gt;
+    
+&lt;/section&gt;
+
+&lt;!--- C.3. END --------------------------------------------------------------------------------------------------- --&gt;
+
+&lt;div class=&quot;wrapper&quot;&gt;&lt;/div&gt;
+</description>
+        <pubDate>Sat, 01 Sep 2012 00:00:00 +0200</pubDate>
+        <link>https://kdee15.github.io/work/2012/09/01/old-mutual/</link>
+        <guid isPermaLink="true">https://kdee15.github.io/work/2012/09/01/old-mutual/</guid>
+        
+        
+        <category>work</category>
+        
+      </item>
+    
+  </channel>
+</rss>
