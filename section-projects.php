@@ -21,7 +21,7 @@
           <article class="card blog-card col-12 col-md-6">
             <a class="o-card hover-card" href="<?php the_permalink() ?>">
               <figure class="m-card-image">
-                <?php the_post_thumbnail(); ?>
+                <img src="<?php the_field('cover_desk') ?>">
               </figure>
               <div class="m-card-body">
                 <h3 class="a-card-header"><?php the_title(); ?></h3>

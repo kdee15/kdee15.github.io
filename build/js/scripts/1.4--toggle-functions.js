@@ -35,7 +35,6 @@ function initToggleFunctions() {
     currentContent = $(this).attr('name');
     if($('#'+currentContent).hasClass('on')){
       $('#'+currentContent).removeClass('on');
-      $('body').removeClass('modal-open');
     }else{
       hideAllContent();
       showCurrentContent(currentContent);
@@ -44,17 +43,41 @@ function initToggleFunctions() {
 
   function hideAllContent(){
     $('.toggle-content').removeClass('on');
-    $('body').removeClass('modal-open');
   };
 
   function showCurrentContent(currentContentDiv){
     $('#'+currentContentDiv).addClass('on');
-    $('body').addClass('modal-open');
   };
 
   // A.2. END ---------------------------------------------
 
-  // A.3. MOBILE SHOWHIDE ---------------------------------
+  // A.3. SLIDE DIV --------------------------------------
+
+  var slideContent = '';
+  $('.slide-div').on('click', function(){
+    slideContent = $(this).attr('name');
+    if($('#'+slideContent).hasClass('on')){
+      $('#'+slideContent).removeClass('on');
+      $('.'+slideContent).removeClass('on');
+    }else{
+      hideSlideContent();
+      showSlideContent(slideContent);
+    }
+  });
+
+  function hideSlideContent(){
+    $('.slide-div').removeClass('on');
+    $('.slide-content').removeClass('on');
+  };
+
+  function showSlideContent(slideContentDiv){
+    $('#'+slideContentDiv).addClass('on');
+    $('.'+slideContentDiv).addClass('on');
+  };
+
+  // A.3. END ---------------------------------------------
+
+  // A.4. MOBILE SHOWHIDE ---------------------------------
 
   (function($){
     if($('html').hasClass('mobile')){
@@ -71,9 +94,9 @@ function initToggleFunctions() {
     }
   })(jQuery)
 
-  // A.3. END ---------------------------------------------
+  // A.4. END ---------------------------------------------
 
-  // A.4. BURGER MENU -------------------------------------
+  // A.5. BURGER MENU -------------------------------------
 
   $('.reveal').click(function(e) {
 
@@ -117,9 +140,9 @@ function initToggleFunctions() {
 
   });
 
-  // A.4. END ---------------------------------------------
+  // A.5. END ---------------------------------------------
 
-  // A.5. MODAL POPUPS ------------------------------------
+  // A.6. MODAL POPUPS ------------------------------------
 
   var modalContent = '';
   $('.modal-open').on('click', function(){
@@ -143,7 +166,7 @@ function initToggleFunctions() {
     $('body').addClass('modal-open');
   };
 
-  // A.5. END ---------------------------------------------
+  // A.6. END ---------------------------------------------
 
 }
 

@@ -4,68 +4,37 @@
 
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
-.o-block {
-  &.home-carousel {
+.o-tab {
+  &.slide-content { display: flex;flex-direction: column;
+    .o-wrapper { max-width: 1440px; margin: 0 auto; width: 100%; position: relative; }
 
-    .swiper-container { overflow-x: hidden; padding-bottom: $base-lg;
-      .swiper-wrapper { }
+    &#details { transform: translateY(0) translateX(-100%); bottom: 44px; right: auto; width: 100%;
+      &.on { transform: translateY(0) translateX(0); }
     }
 
-    .swiper-button {
-      @include vertical-align(absolute);
-      width: 15px;
-      height: 25px;
-      background-size: cover;
-      display: none;
-      opacity: 0.3;
-      transition: 0.2s;
-      outline: none!important;
-
-      &.swiper-button-next {
-        background-image: url('../../dist/images/site/button--arrow-right.svg'); right: 6px; left: auto;
+    .m-detail { flex: 1;
+      &.project-info { flex: 2;
+        .a-title { color: white; background: #2C2C2C; margin: 0 0 15px 0; padding: 10px 15px; }
+        p { color: white; margin: 0 0 15px 0; padding: 0 15px; }
+        ul { color: white; }
       }
-
-      &.swiper-button-prev {
-        background-image: url('../../dist/images/site/button--arrow-left.svg'); left: 6px; right: auto;
-      }
-
-      &:hover { opacity: 1; transition: 0.2s; width: 17px; height: 27px; }
-
-    }
-
-    .swiper-pagination {
-      .swiper-pagination-bullet { width: 16px; height: 4px; border-radius: 0;
-        &.swiper-pagination-bullet-active {  }
+      &.date { display: flex; align-items: center;
+        .a-title { flex: 1; margin: 0; padding: 0; font-size: 14px; color: white; }
+        .a-detail { flex: 3; margin: 0; padding: 0; font-size: 14px; color: white; }
+        &.date-start { background-color: red; max-height: 50px; padding: 0 0 0 15px; }
+        &.date-end { background-color: red; max-height: 50px; padding: 0 0 0 15px; }
       }
     }
+
   }
 }
 
 // A.1. END -----------------------------------------------------------------------------------------------------------
 
-// A.2. OWL CAROUSEL --------------------------------------------------------------------------------------------------
+// A.2. DEMO TABS -----------------------------------------------------------------------------------------------------
 
-.owl-carousel {
-  .owl-nav { display: none;
-    button { @include vertical-align(absolute); width: 30px; height: 30px; outline: none!important; box-shadow: none!important;
-      span { @include position(absolute,0); overflow: hidden; background: pink; border-radius: 30px; }
-      &.owl-prev { left: -20px; }
-      &.owl-next { right: -20px; }
-      &:active { outline: none!important; }
-    }
-  }
-  .owl-dots { text-align: center;
-    .owl-dot { margin: 0 5px; outline: none!important; box-shadow: none!important;
-      span { display: block; background: white; width: 10px; height: 10px; border-radius: 10px;  }
-
-      &:first-child { margin-left: 0; }
-      &:last-child { margin-right: 0; }
-      &.active {
-        span { background: pink; }
-      }
-      &:active { outline: none!important; box-shadow: none!important; }
-    }
-  }
+.demo-tab {
+  .m-icon { padding: 0; margin: 0; }
 }
 
 // A.2. END -----------------------------------------------------------------------------------------------------------
@@ -88,10 +57,20 @@
 
 @media ($md-up) {
 
-  .owl-carousel {
-    .owl-nav { display: block; }
+  .o-tab {
+    &.slide-content {
+      &#details { right: auto; width: 30%; max-width: 450px; }
+      .m-detail {
+        &.project-info {  }
+        &.date {
+          .a-title {  }
+          .a-detail { flex: 4;  }
+          &.date-start {  }
+          &.date-end {  }
+        }
+      }
+    }
   }
-
 
 }
 

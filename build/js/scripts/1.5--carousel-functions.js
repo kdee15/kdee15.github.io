@@ -9,6 +9,7 @@ function initSwiperFunctions() {
   $('.owl-desktop').owlCarousel({
     loop:true,
     nav:true,
+    dots: true,
     responsive:{
       0:{
         items:1
@@ -29,6 +30,7 @@ function initSwiperFunctions() {
   $('.owl-tablet').owlCarousel({
     loop:true,
     nav:true,
+    dots: true,
     responsive:{
       0:{
         items:1
@@ -49,6 +51,7 @@ function initSwiperFunctions() {
   $('.owl-mobile').owlCarousel({
     loop:true,
     nav:true,
+    dots: true,
     responsive:{
       0:{
         items:1
