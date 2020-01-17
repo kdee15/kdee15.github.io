@@ -110,8 +110,8 @@ $BarRounded:            0px;
   right: 0;
   bottom: 0;
   width: 100%;
-  max-width: 300px;
-  background: $grey-33;
+  max-width: none;
+  //background: $grey-33;
   display: block;
   transform: translateX(80%);
   transition: 0.3s;
@@ -207,7 +207,7 @@ body { transition: 0.3s;
 @media ($sm-up) {
 
   .a-burger-menu,
-  .navbar-collapse  { max-width: 300px; }
+  .navbar-collapse  { max-width: none; }
 
   .a-burger,
   .navbar-toggler {

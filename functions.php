@@ -62,10 +62,42 @@ add_action( 'widgets_init', 'arphabet_widgets_init' );
 
 // A.4 END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
+// A.4.1. PROJECTS ----------------------------------------
+
+function projects() {
+  $labels = array(
+    'Title'              => _x( 'Projects', 'post type general name' ),
+    'singular_name'      => _x( 'Projects', 'post type singular name' ),
+    'add_new'            => __( 'Add New', 'Project' ),
+    'add_new_item'       => __( 'Add New Project' ),
+    'edit_item'          => __( 'Edit Projects' ),
+    'new_item'           => __( 'New Project' ),
+    'all_items'          => __( 'All Projects' ),
+    'view_item'          => __( 'View Project' ),
+    'parent_item_colon'  => '',
+    'menu_name'          => 'Projects'
+  );
+
+  $args = array(
+    'labels'         => $labels,
+    'description'   => 'A list of Projects',
+    'public'        => true,
+    'menu_position' => 7,
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
+    'has_archive'   => true,
+
+  );
+
+  register_post_type( 'projects', $args );
+}
+
+add_action( 'init', 'projects' );
+
+// A.4.1. End ---------------------------------------------
+
 // A.4 END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // A.5 END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
 
 // A.X BREADCRUMBS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
@@ -186,6 +218,5 @@ function the_breadcrumb() {
        wp_register_script('jquery', ("http://ajax.googleapis.com/ajax/libs/jquery/1.4.1/jquery.min.js"), false);
        wp_enqueue_script('jquery');
     }
-    
 
 ?>

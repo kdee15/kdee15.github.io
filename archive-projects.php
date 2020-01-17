@@ -1,7 +1,7 @@
 <?php
 
 /*
-Template Name: Archive page
+Template Name: Project Archive
 */
 
 get_header(); ?>
@@ -10,11 +10,11 @@ get_header(); ?>
 
     <!-- C.2. SITE MAST ------------------------------------------------------------------------------------------- -->
 
-    <section class="page archive-fixtures" id="mast">
+    <section class="page archive-projects" id="mast">
 
         <!-- C.2.1. INTRO ----------------------------------------------------------------------------------------- -->
 
-        <?php get_template_part( 'section-front' ); ?>
+        <?php get_template_part( 'section-projects' ); ?>
 
         <!-- C.2.1. End ------------------------------------------------------------------------------------------- -->
         
@@ -28,7 +28,7 @@ get_header(); ?>
             
                 <div class="container">
                 
-                    <h1>i am a fixture archive</h1>
+                    <h1>i am a project archive</h1>
 
                     <ul class="list__fixtures grid">
 
@@ -37,7 +37,7 @@ get_header(); ?>
                         $fixture1 = current_time('Ymd');
 
                         $args=array(
-                            'post_type' => 'fixtures',
+                            'post_type' => 'projects',
                             'post_status' => 'publish',
                             'posts_per_page' => 6,
 

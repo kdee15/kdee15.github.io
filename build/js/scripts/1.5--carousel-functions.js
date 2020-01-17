@@ -6,19 +6,62 @@ function initSwiperFunctions() {
 
   // A.1. HOME CAROUSEL -----------------------------------
 
-  var mySwiper = new Swiper ('.home-carousel', {
+  $('.owl-desktop').owlCarousel({
+    loop:true,
+    nav:true,
+    responsive:{
+      0:{
+        items:1
+      },
+      600:{
+        items:1
+      },
+      1000:{
+        items:1
+      }
+    }
+  })
 
-    direction: 'horizontal',
-    loop: true,
-    slidesPerView: 1,
-    spaceBetween: 0,
-    pagination: {
-      el: '.swiper-pagination',
-      clickable: true,
-    },
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
+  // A.1. END ---------------------------------------------
+
+  // A.1. HOME CAROUSEL -----------------------------------
+
+  $('.owl-tablet').owlCarousel({
+    loop:true,
+    nav:true,
+    responsive:{
+      0:{
+        items:1
+      },
+      600:{
+        items:1
+      },
+      1000:{
+        items:1
+      }
+    }
+  })
+
+  // A.1. END ---------------------------------------------
+
+  // A.1. HOME CAROUSEL -----------------------------------
+
+  $('.owl-mobile').owlCarousel({
+    loop:true,
+    nav:true,
+    responsive:{
+      0:{
+        items:1
+      },
+      450:{
+        items:2
+      },
+      768:{
+        items:3
+      },
+      992:{
+        items:4
+      }
     }
   })
 

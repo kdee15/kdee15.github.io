@@ -34,7 +34,7 @@ get_header();
 
     <?php get_template_part( 'section-feeds' ); ?>
 
-    <?php get_template_part( 'section-blog' ); ?>
+    <?php get_template_part( 'section-projects' ); ?>
 
     <!-- C.2. END ------------------------------------- -->
 
