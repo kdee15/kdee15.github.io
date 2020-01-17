@@ -13,12 +13,6 @@ get_header();
 
 <!-- C. WORK AREA +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
 
-<!-- C.1. PAGE HEADER --------------------------------- -->
-
-<?php get_template_part( 'inc/navigation-page' ); ?>
-
-<!-- C.1. END ----------------------------------------- -->
-
 <main class="p-main page single projects">
 
   <!-- C.2. SECTIONS ---------------------------------- -->
@@ -33,51 +27,61 @@ get_header();
     </picture>
   </section>
 
-  <ul class="o-project-nav">
-    <li class="m-nav-item project-details"><span class="slide-div details" name="details">Project Details</span></li>
-    <li class="m-nav-item project-demos">
-      <span class="m-nav-title">Demos</span>
-      <span class="slide-div demo-tab demo-desk" name="demo-desk">
+  <nav class="o-project-nav">
+    <span class="slide-div demo-tab details" name="details">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon laptop" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-               viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+               viewBox="0 0 148.2 100" style="enable-background:new 0 0 148.2 100;" xml:space="preserve">
           <g>
-            <path d="M82.6,30.6c0-1.5-1.2-2.6-2.6-2.6H20c-1.5,0-2.6,1.2-2.6,2.6v36.5h65.2V30.6z M79.3,61.9H20.7V31.7h58.7L79.3,61.9
-              L79.3,61.9z"/>
-            <path d="M19.6,72h60.8c1.2,0,2.2-1.3,2.2-2.9v-1.7H57.1V68c0,0.9-0.8,1.7-1.8,1.7H44.7c-1,0-1.8-0.8-1.8-1.7v-0.6H17.4v1.7
-              C17.4,70.7,18.4,72,19.6,72z"/>
+            <path d="M148.2,5.9c0-3.4-2.7-5.9-5.9-5.9H5.9C2.5,0,0,2.7,0,5.9v83h148.2V5.9z M140.7,77H7.5V8.4h133.4L140.7,77L140.7,77z"/>
+            <path d="M5,100h138.2c2.7,0,5-3,5-6.6v-3.9h-58v1.4c0,2-1.8,3.9-4.1,3.9H62c-2.3,0-4.1-1.8-4.1-3.9v-1.4H0v3.9C0,97,2.3,100,5,100z
+              "/>
           </g>
           </svg>
         </figure>
+        <p class="a-icon-text">Project Details</p>
       </span>
-      <span class="slide-div demo-tab demo-tab" name="demo-tab">
+    <span class="slide-div demo-tab demo-desk" name="demo-desk">
+        <figure class="m-icon">
+          <svg version="1.1" class="a-icon laptop" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 148.2 100" style="enable-background:new 0 0 148.2 100;" xml:space="preserve">
+          <g>
+            <path d="M148.2,5.9c0-3.4-2.7-5.9-5.9-5.9H5.9C2.5,0,0,2.7,0,5.9v83h148.2V5.9z M140.7,77H7.5V8.4h133.4L140.7,77L140.7,77z"/>
+            <path d="M5,100h138.2c2.7,0,5-3,5-6.6v-3.9h-58v1.4c0,2-1.8,3.9-4.1,3.9H62c-2.3,0-4.1-1.8-4.1-3.9v-1.4H0v3.9C0,97,2.3,100,5,100z
+              "/>
+          </g>
+          </svg>
+        </figure>
+        <p class="a-icon-text">Desktop Screens</p>
+      </span>
+    <span class="slide-div demo-tab demo-tab" name="demo-tab">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon tablet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-               viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+               viewBox="0 0 69.1 100" style="enable-background:new 0 0 69.1 100;" xml:space="preserve">
           <g>
-            <path d="M73.5,9.2h-47c-2.6,0-4.7,2.1-4.7,4.7v72.2c0,2.6,2.1,4.7,4.7,4.7h47c2.6,0,4.7-2.1,4.7-4.7V13.9
-              C78.3,11.3,76.1,9.2,73.5,9.2z M50,88.7c-2.2,0-3.9-1.8-3.9-3.9c0-2.2,1.8-3.9,3.9-3.9c2.2,0,3.9,1.8,3.9,3.9
-              C53.9,86.9,52.2,88.7,50,88.7z M73.6,77.6H26.4V14.1h47.2V77.6z"/>
-            <circle cx="50" cy="84.8" r="2.4"/>
+            <path d="M63.4,0H5.8C2.6,0,0,2.6,0,5.8v88.5c0,3.2,2.6,5.8,5.8,5.8h57.6c3.2,0,5.8-2.6,5.8-5.8V5.8C69.2,2.6,66.5,0,63.4,0z
+               M34.6,97.4c-2.7,0-4.8-2.2-4.8-4.8c0-2.7,2.2-4.8,4.8-4.8c2.7,0,4.8,2.2,4.8,4.8C39.3,95.2,37.3,97.4,34.6,97.4z M63.5,83.8H5.6V6
+              h57.8V83.8z"/>
+            <circle cx="34.6" cy="92.6" r="2.9"/>
           </g>
           </svg>
         </figure>
+        <p class="a-icon-text">Tablet Screens</p>
       </span>
-      <span class="slide-div demo-tab demo-mob" name="demo-mob">
+    <span class="slide-div demo-tab demo-mob" name="demo-mob">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon mobile" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-               viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+               viewBox="0 0 51.6 100" style="enable-background:new 0 0 51.6 100;" xml:space="preserve">
           <g>
-            <path d="M67.2,7.6H32.8c-2.6,0-4.7,2.1-4.7,4.7v75.5c0,2.6,2.1,4.7,4.7,4.7h34.4c2.6,0,4.7-2.1,4.7-4.7V12.4
-              C71.9,9.8,69.8,7.6,67.2,7.6z M50,90.4c-2.2,0-3.9-1.8-3.9-3.9s1.8-3.9,3.9-3.9c2.2,0,3.9,1.8,3.9,3.9S52.2,90.4,50,90.4z
-               M67.3,79.4H32.7V15.9h34.6V79.4z"/>
-            <circle cx="50" cy="86.5" r="2.4"/>
+            <path d="M46.1,0H5.5C2.5,0,0,2.5,0,5.5v88.9c0,3.1,2.5,5.5,5.5,5.5h40.5c3.1,0,5.5-2.5,5.5-5.5V5.7C51.6,2.6,49.1,0,46.1,0z
+               M25.8,97.5c-2.6,0-4.6-2.1-4.6-4.6s2.1-4.6,4.6-4.6c2.6,0,4.6,2.1,4.6,4.6S28.4,97.5,25.8,97.5z M46.2,84.6H5.4V9.8h40.8V84.6z"/>
+            <circle cx="25.8" cy="92.9" r="2.8"/>
           </g>
           </svg>
         </figure>
+        <p class="a-icon-text">Mobile Screens</p>
       </span>
-    </li>
-  </ul>
+  </nav>
 
   <div class="o-tab slide-content" id="details">
     <div class="m-detail date date-start">

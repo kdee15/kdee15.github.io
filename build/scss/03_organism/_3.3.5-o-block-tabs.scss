@@ -5,12 +5,11 @@
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
 .o-tab {
-  &.slide-content { display: flex;flex-direction: column;
-    .o-wrapper { max-width: 1440px; margin: 0 auto; width: 100%; position: relative; }
-
-    &#details { transform: translateY(0) translateX(-100%); bottom: 44px; right: auto; width: 100%;
+  &.slide-content { display: flex;flex-direction: column; bottom: 50px; transform: translateY(120%);
+    &#details { transform: translateY(0) translateX(-100%); right: auto; width: 100%;
       &.on { transform: translateY(0) translateX(0); }
     }
+    .o-wrapper { max-width: 1440px; margin: 0 auto; width: 100%; position: relative; }
 
     .m-detail { flex: 1;
       &.project-info { flex: 2;
@@ -25,7 +24,7 @@
         &.date-end { background-color: red; max-height: 50px; padding: 0 0 0 15px; }
       }
     }
-
+    &.on { transform: translateY(0%); }
   }
 }
 
@@ -33,8 +32,16 @@
 
 // A.2. DEMO TABS -----------------------------------------------------------------------------------------------------
 
-.demo-tab {
-  .m-icon { padding: 0; margin: 0; }
+.demo-tab { margin-right: 10px;
+  .m-icon { padding: 0; margin: 0; display: inline-block; vertical-align: middle;
+    .a-icon { height: 20px;
+      &.laptop {}
+      &.tablet { width: 15px; }
+      &.mobile { width: 10px; }
+      path { fill: white; }
+    }
+  }
+  .a-icon-text { margin: 0; padding: 0; display: inline-block; line-height: normal; vertical-align: middle; color: white; }
 }
 
 // A.2. END -----------------------------------------------------------------------------------------------------------
