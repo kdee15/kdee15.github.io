@@ -21,12 +21,16 @@
   left: 0;
   right: 0;
   background-color: rgba(0,0,0,0.8);
-  display: flex;
-  padding: 0;
+  display: block;
+  padding: 10px 15px;
   margin: 0;
   z-index: 10;
 
-  .m-nav-item { list-style-type: none; flex: 1; padding: 10px 15px;
+  .m-nav-item { display: inline-block; cursor: pointer;
+    .m-nav-title { line-height: normal; color: white; font-weight: 400; margin-right: 8px; }
+    &.project-details { color: white; line-height: normal;
+      span { display: inline-block; vertical-align: middle; font-weight: 400; }
+    }
     &.project-demos {
       span { display: inline-block; vertical-align: middle; }
     }
