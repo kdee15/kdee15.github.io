@@ -27,7 +27,7 @@ function initSwiperFunctions() {
 
   // A.1. HOME CAROUSEL -----------------------------------
 
-  $('.owl-tablet').owlCarousel({
+  $('.owl-tablet').owlCarousel({ 
     loop:true,
     nav:true,
     dots: true,
