@@ -28,7 +28,7 @@ get_header();
   </section>
 
   <nav class="o-project-nav">
-    <span class="slide-div demo-tab details" name="details">
+    <span class="slide-div demo-tab details show" name="details">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon cog" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -47,7 +47,7 @@ get_header();
         </figure>
         <p class="a-icon-text">Project Details</p>
       </span>
-    <span class="slide-div demo-tab demo-desk" name="demo-desk">
+    <span class="slide-div demo-tab demo-desk <?php the_field('show_desk') ?>" name="demo-desk">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon laptop" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 148.2 100" style="enable-background:new 0 0 148.2 100;" xml:space="preserve">
@@ -60,7 +60,7 @@ get_header();
         </figure>
         <p class="a-icon-text">Desktop Screens</p>
       </span>
-    <span class="slide-div demo-tab demo-tab" name="demo-tab">
+    <span class="slide-div demo-tab demo-tab <?php the_field('show_tab') ?>" name="demo-tab">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon tablet" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 69.1 100" style="enable-background:new 0 0 69.1 100;" xml:space="preserve">
@@ -74,7 +74,7 @@ get_header();
         </figure>
         <p class="a-icon-text">Tablet Screens</p>
       </span>
-    <span class="slide-div demo-tab demo-mob" name="demo-mob">
+    <span class="slide-div demo-tab demo-mob <?php the_field('show_mob') ?>" name="demo-mob">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon mobile" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 51.6 100" style="enable-background:new 0 0 51.6 100;" xml:space="preserve">
@@ -86,6 +86,44 @@ get_header();
           </svg>
         </figure>
         <p class="a-icon-text">Mobile Screens</p>
+      </span>
+    <a class="demo-tab home show" href="<?php echo get_home_url(); ?>">
+      <figure class="m-icon">
+        <svg version="1.1" class="a-icon cog" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+             viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+          <g>
+            <path d="M97.1,39.9L89.6,39c-0.9-3.3-2.2-6.4-3.9-9.4l4.7-5.9c1-1.3,0.9-3.2-0.3-4.4l-9.6-9.5c-1.2-1.2-3.1-1.3-4.4-0.3l-5.9,4.7
+              c-2.9-1.7-6.1-3-9.3-3.9l-0.9-7.5C59.9,1.2,58.4,0,56.8,0H43.2c-1.7,0-3.1,1.2-3.3,2.9L39,10.4c-3.3,0.9-6.4,2.2-9.4,3.9l-5.9-4.7
+              c-1.3-1-3.2-0.9-4.4,0.3l-9.5,9.6c-1.2,1.2-1.3,3.1-0.3,4.4l4.7,5.9c-1.7,2.9-3,6.1-3.9,9.3l-7.5,0.9C1.2,40.1,0,41.6,0,43.2v13.6
+              c0,1.7,1.2,3.1,2.9,3.3l7.5,0.8c0.9,3.3,2.2,6.4,3.9,9.4l-4.7,5.9c-1,1.3-0.9,3.2,0.3,4.4l9.6,9.6c1.2,1.2,3.1,1.3,4.4,0.3l5.9-4.7
+              c2.9,1.7,6.1,3,9.3,3.9l0.9,7.5c0.2,1.7,1.6,2.9,3.3,2.9h13.6c1.7,0,3.1-1.2,3.3-2.9l0.9-7.5c3.3-0.9,6.4-2.2,9.4-3.9l5.9,4.7
+              c1.3,1,3.2,0.9,4.4-0.3l9.6-9.6c1.2-1.2,1.3-3.1,0.3-4.4l-4.7-5.9c1.7-2.9,2.9-6.1,3.8-9.3l7.5-0.9c1.7-0.2,2.9-1.6,2.9-3.3V43.2
+              C100,41.5,98.7,40.1,97.1,39.9z M63.2,63.2c-7.2,7.3-18.9,7.4-26.2,0.3c-0.1-0.1-0.2-0.2-0.3-0.3c-7.3-7.2-7.4-18.9-0.3-26.2
+              c0.1-0.1,0.2-0.2,0.3-0.3c7.2-7.3,18.9-7.4,26.2-0.3c0.1,0.1,0.2,0.2,0.3,0.3c7.3,7.2,7.4,18.9,0.3,26.2
+              C63.4,63,63.3,63.1,63.2,63.2z"/>
+          </g>
+          </svg>
+      </figure>
+      <p class="a-icon-text">Home</p>
+    </a>
+    <span class="demo-tab back show" onclick="history.go(-1);">
+        <figure class="m-icon">
+          <svg version="1.1" class="a-icon cog" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+               viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
+          <g>
+            <path d="M97.1,39.9L89.6,39c-0.9-3.3-2.2-6.4-3.9-9.4l4.7-5.9c1-1.3,0.9-3.2-0.3-4.4l-9.6-9.5c-1.2-1.2-3.1-1.3-4.4-0.3l-5.9,4.7
+              c-2.9-1.7-6.1-3-9.3-3.9l-0.9-7.5C59.9,1.2,58.4,0,56.8,0H43.2c-1.7,0-3.1,1.2-3.3,2.9L39,10.4c-3.3,0.9-6.4,2.2-9.4,3.9l-5.9-4.7
+              c-1.3-1-3.2-0.9-4.4,0.3l-9.5,9.6c-1.2,1.2-1.3,3.1-0.3,4.4l4.7,5.9c-1.7,2.9-3,6.1-3.9,9.3l-7.5,0.9C1.2,40.1,0,41.6,0,43.2v13.6
+              c0,1.7,1.2,3.1,2.9,3.3l7.5,0.8c0.9,3.3,2.2,6.4,3.9,9.4l-4.7,5.9c-1,1.3-0.9,3.2,0.3,4.4l9.6,9.6c1.2,1.2,3.1,1.3,4.4,0.3l5.9-4.7
+              c2.9,1.7,6.1,3,9.3,3.9l0.9,7.5c0.2,1.7,1.6,2.9,3.3,2.9h13.6c1.7,0,3.1-1.2,3.3-2.9l0.9-7.5c3.3-0.9,6.4-2.2,9.4-3.9l5.9,4.7
+              c1.3,1,3.2,0.9,4.4-0.3l9.6-9.6c1.2-1.2,1.3-3.1,0.3-4.4l-4.7-5.9c1.7-2.9,2.9-6.1,3.8-9.3l7.5-0.9c1.7-0.2,2.9-1.6,2.9-3.3V43.2
+              C100,41.5,98.7,40.1,97.1,39.9z M63.2,63.2c-7.2,7.3-18.9,7.4-26.2,0.3c-0.1-0.1-0.2-0.2-0.3-0.3c-7.3-7.2-7.4-18.9-0.3-26.2
+              c0.1-0.1,0.2-0.2,0.3-0.3c7.2-7.3,18.9-7.4,26.2-0.3c0.1,0.1,0.2,0.2,0.3,0.3c7.3,7.2,7.4,18.9,0.3,26.2
+              C63.4,63,63.3,63.1,63.2,63.2z"/>
+          </g>
+          </svg>
+        </figure>
+        <p class="a-icon-text">BACK</p>
       </span>
   </nav>
 
