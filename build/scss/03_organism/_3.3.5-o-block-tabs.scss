@@ -32,16 +32,27 @@
 
 // A.2. DEMO TABS -----------------------------------------------------------------------------------------------------
 
-.demo-tab { margin-right: 10px;
+.demo-tab { margin-right: 10px; cursor: pointer; display: none; text-decoration: none;
+  &.show { display: inline-block; }
+  &.home, &.back { float: right; }
   .m-icon { padding: 0; margin: 0; display: inline-block; vertical-align: middle;
     .a-icon { height: 20px;
+      &.cog { width: 20px; }
       &.laptop {}
       &.tablet { width: 15px; }
       &.mobile { width: 10px; }
       path { fill: white; }
     }
   }
-  .a-icon-text { margin: 0; padding: 0; display: inline-block; line-height: normal; vertical-align: middle; color: white; }
+  .a-icon-text { margin: 0; padding: 0; display: none; line-height: normal; vertical-align: middle; color: white; }
+  &:hover { text-decoration: none;
+    .m-icon {
+      .a-icon {
+        path { fill: red; }
+      }
+    }
+    .a-icon-text { color: red; }
+  }
 }
 
 // A.2. END -----------------------------------------------------------------------------------------------------------
@@ -56,7 +67,27 @@
 
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-up) {} 
+@media ($sm-up) {
+
+  // A.2. DEMO TABS ---------------------------------------
+
+  .demo-tab {
+    .m-icon {
+      .a-icon { height: 20px;
+        &.cog { width: 20px; }
+        &.laptop {}
+        &.tablet { width: 15px; }
+        &.mobile { width: 10px; }
+        path { fill: white; }
+      }
+    }
+    .a-icon-text { display: inline-block; }
+
+  }
+
+  // A.2. END ---------------------------------------------
+
+}
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
