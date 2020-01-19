@@ -20,11 +20,28 @@
     </figure>
 
     <!-- C.2.0.1. Page Title -->
-
     <section class="m-header-text" id="box1">
       <h2>kirk daniels</h2>
       <h1>{ frontend developer }</h1>
     </section>
+
+    <!-- C.2.0.4. NAVIGATION -->
+
+    <nav class="o-navigation">
+      <div class="o-hamburger m-hamburger--spin burger-nav" name="burger-nav">
+        <div class="m-hamburger-box">
+          <div class="m-hamburger-inner"></div>
+        </div>
+      </div>
+      <div class="o-wrapper o-burger-nav" id="burger-nav">
+        <ul class="o-nav-list">
+          <li class="m-list-item">Projects</li>
+          <li class="m-list-item">My story</li>
+          <li class="m-list-item">Stats</li>
+          <li class="m-list-item">Find me</li>
+        </ul>
+      </div>
+    </nav>
 
     <!-- C.2.0.4. SOCIAL MEDIA -->
     <ul class="social-media">

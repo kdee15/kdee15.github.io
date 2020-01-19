@@ -20,8 +20,6 @@
 
   .m-figure { width: 250px; padding: 0; margin: $base 0 $base $base; transition: 0.3s;  }
 
-  .o-hamburger { transition: 0.3s; @include vertical-align(absolute); }
-
   &.sticky {
     .m-figure { width: 150px; transition: 0.3s; margin: 5px; }
     .o-hamburger { transition: 0.3s; }

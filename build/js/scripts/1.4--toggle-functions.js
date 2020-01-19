@@ -140,6 +140,29 @@ function initToggleFunctions() {
 
   });
 
+
+  var burgerContent = '';
+  $('.o-hamburger').on('click', function(){
+    burgerContent = $(this).attr('name');
+    if($('#'+burgerContent).hasClass('on')){
+      $('#'+burgerContent).removeClass('on');
+      $('.'+burgerContent).removeClass('on');
+    }else{
+      hideBurgerContent();
+      showBurgerContent(burgerContent);
+    }
+  });
+
+  function hideBurgerContent(){
+    $('.o-burger-nav').removeClass('on');
+    $('.o-hamburger').removeClass('on');
+  };
+
+  function showBurgerContent(burgerContentDiv){
+    $('#'+burgerContentDiv).addClass('on');
+    $('.'+burgerContentDiv).addClass('on');
+  };
+
   // A.5. END ---------------------------------------------
 
   // A.6. MODAL POPUPS ------------------------------------
