@@ -147,6 +147,7 @@ function initToggleFunctions() {
     if($('#'+burgerContent).hasClass('on')){
       $('#'+burgerContent).removeClass('on');
       $('.'+burgerContent).removeClass('on');
+      $('.o-navigation').removeClass('on');
     }else{
       hideBurgerContent();
       showBurgerContent(burgerContent);
@@ -156,12 +157,19 @@ function initToggleFunctions() {
   function hideBurgerContent(){
     $('.o-burger-nav').removeClass('on');
     $('.o-hamburger').removeClass('on');
+    $('.o-navigation').removeClass('on');
   };
 
   function showBurgerContent(burgerContentDiv){
     $('#'+burgerContentDiv).addClass('on');
     $('.'+burgerContentDiv).addClass('on');
+    $('.o-navigation').addClass('on');
   };
+
+  $('.a-scroll-link').on('click', function(){
+    $('.burger-nav').removeClass('on');
+    $('#burger-nav').removeClass('on');
+  });
 
   // A.5. END ---------------------------------------------
 

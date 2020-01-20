@@ -24,6 +24,7 @@ function initAltTextFunctions() {
   $(document).ready(function(){
 
     $('.o-home-header').attr("style","background-image:url('"+ RandomNumPath +"/dist/images/background/bg-main"+RandomNum+".jpg')");
+    $('.contact-block').attr("style","background-image:url('"+ RandomNumPath +"/dist/images/background/bg-contact"+RandomNum+".jpg')");
     //$('.article').attr("style","background-image:url('../../../../../dist/images/background/bg-main"+RandomNum+".jpg')");
 
   });

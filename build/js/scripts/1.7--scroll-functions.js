@@ -4,25 +4,38 @@
 
 function initScrollFunctions() {
 
-  // A.1. ON SCROLL STICKY --------------------------------
+// A.4. STICKY BLOCK --------------------------------------------------------------------------------------------------
 
-  // When the user scrolls the page, execute myFunction
-  window.onscroll = function() {myFunction()};
 
-  // Get the header
-  var header = document.getElementById("o-header");
 
-  // Get the offset position of the navbar
-  var sticky = header.offsetTop;
+// A.4. END -----------------------------------------------------------------------------------------------------------
 
-  // Add the sticky class to the header when you reach its scroll position. Remove "sticky" when you leave the scroll position
-  function myFunction() {
-    if (window.pageYOffset > sticky) {
-      header.classList.add("sticky");
-    } else {
-      header.classList.remove("sticky");
+// A.3. SCROLL TO LINK ------------------------------------------------------------------------------------------------
+
+  $(".a-scroll-link").click(function(event){
+
+    event.preventDefault();
+
+    //calculate destination place
+    var dest=0;
+    if($(this.hash).offset().top > $(document).height()-$(window).height()){
+      dest=$(document).height()-$(window).height();
+    }else{
+      dest=$(this.hash).offset().top;
     }
-  }
+
+    //go to destination
+    $('html,body').animate({scrollTop:dest}, 1000,'swing');
+
+
+    //add active class
+    $('.a-scroll-link').removeClass('active');
+    $(this).addClass('active');
+
+  });
+
+// A.3. END -----------------------------------------------------------------------------------------------------------
+
 
   // A.1. END ---------------------------------------------
 

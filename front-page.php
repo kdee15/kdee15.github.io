@@ -29,6 +29,12 @@ get_header();
 
     <?php get_template_part( 'section-projects' ); ?>
 
+    <?php get_template_part( 'section-about' ); ?>
+
+    <?php get_template_part( 'section-stats' ); ?>
+
+    <?php get_template_part( 'section-contact' ); ?>
+
     <!-- C.2. END ------------------------------------- -->
 
     <!-- C.3. FOOTER  --------------------------------- -->

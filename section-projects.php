@@ -1,4 +1,6 @@
-<section class="o-block projects">
+<section class="o-block projects-block" id="projects">
+
+  <h2 class="a-block-title">{ projects }</h2>
 
   <div class="container">
     <div class="row no-gutters">

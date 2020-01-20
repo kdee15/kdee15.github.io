@@ -42,6 +42,24 @@ add_action( 'widgets_init', 'social_sidebar_widgets_init' );
 
 // A.1.0.1. END
 
+// A.1.0.1. REGISTER SIDEBAR
+
+function page_loader_widgets_init() {
+
+  register_sidebar( array(
+    'name' => 'page loader widget',
+    'id' => 'page_loader',
+    'before_widget' => '<div>',
+    'after_widget' => '</div>',
+    'before_title' => '',
+    'after_title' => '',
+  ) );
+}
+
+add_action( 'widgets_init', 'page_loader_widgets_init' );
+
+// A.1.0.1. END
+
 // A.1.0.2. Twitter Widget
 
 function arphabet_widgets_init() {
