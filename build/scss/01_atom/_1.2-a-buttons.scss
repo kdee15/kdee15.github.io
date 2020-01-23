@@ -15,9 +15,9 @@ $lightButtonFontWeight:   400;
 $mediumButtonFontWeight:  600;
 $heavyButtonFontWeight:   900;
 
-$radius-sml:              0;
-$radius-med:              0;
-$radius-lrg:              0;
+$radius-sml:              3px;
+$radius-med:              10px;
+$radius-lrg:              15px;
 
 // A.0. END - VARIABLES -----------------------------------
 
@@ -44,7 +44,7 @@ $radius-lrg:              0;
   user-select: none; 
   background-image: none; 
   border: 1px solid transparent; 
-  border-radius: $radius-med;
+  border-radius: $radius-sml;
   color: $btn-default-clr;
   background-color: transparent;
   border-color: $btn-default-clr;
