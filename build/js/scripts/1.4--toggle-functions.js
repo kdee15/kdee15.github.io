@@ -167,6 +167,7 @@ function initToggleFunctions() {
   };
 
   $('.a-scroll-link').on('click', function(){
+    $('.o-navigation').removeClass('on');
     $('.burger-nav').removeClass('on');
     $('#burger-nav').removeClass('on');
   });
