@@ -10,8 +10,7 @@ get_header(); ?>
 
     <!-- C.2. SITE MAST ------------------------------------------------------------------------------------------- -->
 
-    <section class="page archive-projects" id="mast">
-
+    <section class="page archive-projects">
 
       <h2 class="a-block-title">{ projects }</h2>
 
@@ -24,7 +23,8 @@ get_header(); ?>
             'post_type' => 'projects',
             'post_status' => 'publish',
             'orderby' => 'meta_value date',
-            'order' => 'DESC'
+            'order' => 'DESC',
+            'posts_per_page' => 999
           );
           $my_query = null;
           $my_query = new WP_Query($args);
@@ -53,11 +53,7 @@ get_header(); ?>
           ?>
 
         </div>
-
-        <a class="a-btn btn-blue" href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=26">VIEW MORE PROJECTS</a>
-
       </div>
-
     </section>
     
     <!-- C.2. END ------------------------------------------------------------------------------------------------- -->
