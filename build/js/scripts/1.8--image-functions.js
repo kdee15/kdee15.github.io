@@ -17,8 +17,8 @@ function initAltTextFunctions() {
 
   var totalImages = 1;
   // var RandomNumPath = 'http://www.kdee.co.za/wp-content/themes/kdee';
-  // var RandomNumPath = 'http://staging.kdee.co.za/kdee/wp-content/themes/kdee';
-  var RandomNumPath = 'http://localhost/kdee/kdee.co.za/3_root/wp-content/themes/kdee';
+  var RandomNumPath = 'http://staging.kdee.co.za/kdee.co.za/wp-content/themes/kdee';
+  // var RandomNumPath = 'http://localhost/kdee/kdee.co.za/3_root/wp-content/themes/kdee';
   var RandomNum = Math.floor( Math.random() * totalImages);
 
   $(document).ready(function(){

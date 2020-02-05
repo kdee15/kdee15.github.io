@@ -10,14 +10,50 @@ get_header(); ?>
 
     <!-- C.2. SITE MAST ------------------------------------------------------------------------------------------- -->
 
-    <section class="page archive-projects" id="mast">
+    <section class="page archive-projects">
 
-        <!-- C.2.1. INTRO ----------------------------------------------------------------------------------------- -->
+      <h2 class="a-block-title">{ projects }</h2>
 
-        <?php get_template_part( 'section-projects' ); ?>
+      <div class="container">
+        <div class="row no-gutters">
 
-        <!-- C.2.1. End ------------------------------------------------------------------------------------------- -->
+          <?php
 
+          $args=array(
+            'post_type' => 'projects',
+            'post_status' => 'publish',
+            'orderby' => 'meta_value date',
+            'order' => 'DESC',
+            'posts_per_page' => 999
+          );
+          $my_query = null;
+          $my_query = new WP_Query($args);
+
+          if( $my_query->have_posts() ) {
+            while ($my_query->have_posts()) : $my_query->the_post(); ?>
+
+              <article class="card blog-card col-12 col-md-6">
+                <a class="o-card hover-card" href="<?php the_permalink() ?>">
+                  <figure class="m-card-image">
+                    <img src="<?php the_field('cover_desk') ?>">
+                  </figure>
+                  <div class="m-card-body">
+                    <h3 class="a-card-header"><?php the_title(); ?></h3>
+                    <?php the_excerpt(); ?>
+                  </div>
+
+                </a>
+              </article>
+
+            <?php
+
+            endwhile;
+          }
+          wp_reset_query();  // Restore global post data stomped by the_post().
+          ?>
+
+        </div>
+      </div>
     </section>
     
     <!-- C.2. END ------------------------------------------------------------------------------------------------- -->

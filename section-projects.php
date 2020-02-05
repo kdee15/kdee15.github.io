@@ -12,7 +12,7 @@
         'post_status' => 'publish',
         'orderby' => 'meta_value date',
         'order' => 'DESC',
-        'posts_per_page' => 10
+        'posts_per_page' => 4
       );
       $my_query = null;
       $my_query = new WP_Query($args);
