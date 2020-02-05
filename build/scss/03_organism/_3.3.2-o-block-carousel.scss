@@ -47,14 +47,14 @@
 
 .owl-carousel {
   .owl-nav { display: none;
-    button { @include vertical-align(absolute); width: 30px; height: 30px; outline: none!important; box-shadow: none!important;
+    button { position: absolute; top: 0; width: 50%; height: 100%; outline: none!important; box-shadow: none!important; opacity: 0;
       span { @include position(absolute,0); overflow: hidden; background: pink; border-radius: 30px; }
-      &.owl-prev { left: -20px; }
-      &.owl-next { right: -20px; }
+      &.owl-prev { right: 50%; background-color: pink; }
+      &.owl-next { left: 50%; background-color: yellow; }
       &:active { outline: none!important; }
     }
   }
-  .owl-dots { text-align: center;
+  .owl-dots { position: absolute; bottom: 15px; left: 0; right: 0; text-align: center;
     .owl-dot { margin: 0 5px; outline: none!important; box-shadow: none!important;
       span { display: block; background: white; width: 10px; height: 10px; border-radius: 10px;  }
 
@@ -91,7 +91,6 @@
   .owl-carousel {
     .owl-nav { display: block; }
   }
-
 
 }
 
