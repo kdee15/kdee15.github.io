@@ -28,7 +28,7 @@ get_header();
   </section>
 
   <nav class="o-project-nav">
-    <span class="slide-div demo-tab details show" name="details">
+    <span class="slide-div demo-tab details show on" name="details">
         <figure class="m-icon">
           <svg version="1.1" class="a-icon cog" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">
@@ -107,7 +107,7 @@ get_header();
       </span>
   </nav>
 
-  <div class="o-tab slide-content" id="details">
+  <div class="o-tab slide-content on" id="details">
     <div class="m-detail date date-start" style="background-color:<?php the_field('color_1') ?>">
       <h4 class="a-title">Start date</h4>
       <p class="a-detail"><?php the_field('start_date') ?></p>

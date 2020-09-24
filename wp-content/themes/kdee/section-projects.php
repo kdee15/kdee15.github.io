@@ -3,7 +3,7 @@
   <h2 class="a-block-title">{ projects }</h2>
 
   <div class="container">
-    <div class="row no-gutters">
+    <div class="row">
 
       <?php
 
@@ -20,7 +20,7 @@
       if( $my_query->have_posts() ) {
         while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-          <article class="card blog-card col-12 col-md-6">
+          <article class="card blog-card col-12 col-md-4">
             <a class="o-card hover-card" href="<?php the_permalink() ?>">
               <figure class="m-card-image">
                 <img src="<?php the_field('cover_desk') ?>">
