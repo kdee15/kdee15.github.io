@@ -21,7 +21,6 @@
         while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
           <article class="card blog-card col-12">
-
             <div class="o-card big-card option-<?php echo rand(1,4); ?>">
               <div class="a-card-bg"></div>
               <figure class="m-card-image">

@@ -47,18 +47,18 @@
     }
 
     .m-card-body {
-      @include position(absolute, 0);
+      //@include position(absolute, 0);
       padding: $base;
       background: rgba(0,0,0,0.8);
       transition: 0.3s ease;
       transform: translateY(0%);
 
-      .a-card-header { position: absolute; top: 45px; left: $base; }
+      //.a-card-header { position: absolute; top: 45px; left: $base; }
       .a-card-text, p {
-        position: absolute;
-        top: 75px;
-        left: $base;
-        right: $base;
+        //position: absolute;
+        //top: 75px;
+        //left: $base;
+        //right: $base;
         line-height: 14px;
         height: 14px;
         // TRUNCATE TEXT
@@ -74,9 +74,9 @@
       .m-card-image {
         img,.a-image { scale: 200; transition: 0.3s ease; }
       }
-      .m-card-body { top: 0; background: rgba(0,0,0,0.6); transition: 0.3s ease; transform: translateY(100%); opacity: 0;
-        .a-card-header { margin: 0; transition: 0.8s; top: 80%; }
-        .a-card-text, p { white-space: normal; transition: 0.6s; height: auto; top: 100%; }
+      .m-card-body { top: 0; height: 50%; background: rgba(0,0,0,0.9); transition: 0.3s ease; transform: translateY(-50%);
+        .a-card-header { margin: 0; transition: 0.8s; /*top: 80%;*/ }
+        .a-card-text, p { white-space: normal; transition: 0.6s; height: auto; /*top: 100%;*/ }
       }
     }
 
