@@ -1,13 +1,8 @@
     <!-- D. JAVASCRIPT ++++++++++++++++++++++++++++++++++++++ -->
 
     <!-- D.2. SITE -->
-
     <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/modernizr.min.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/html5shiv.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/jquery.cbpFWSlider.min.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/ios-orientationchange-fix.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/jquery.mousewheel.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/grid.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/dist/js/app.js"></script>
 
     <!-- D.3. GOOGLE ANALYTICS -->

@@ -3,12 +3,11 @@
 * The main template file
 *
 * @package WordPress
-* @subpackage Spartan
-* @since Spartan 1.0
+* @subpackage KDee
+* @since KDee 1.0
 */
 
 get_header();
-
 ?>
 
 <div id="o-header"></div>

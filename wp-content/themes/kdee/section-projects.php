@@ -2,8 +2,8 @@
 
   <h2 class="a-block-title">{ projects }</h2>
 
-  <div class="container">
-    <div class="row no-gutters">
+  <div class="container-fluid p-0">
+    <div class="grid-wrapper row no-gutters">
 
       <?php
 
@@ -20,17 +20,22 @@
       if( $my_query->have_posts() ) {
         while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-          <article class="card blog-card col-12 col-md-6">
-            <a class="o-card hover-card" href="<?php the_permalink() ?>">
+          <article class="card blog-card col-12">
+
+            <div class="o-card big-card option-<?php echo rand(1,4); ?>">
+              <div class="a-card-bg"></div>
               <figure class="m-card-image">
                 <img src="<?php the_field('cover_desk') ?>">
               </figure>
               <div class="m-card-body">
-                <h3 class="a-card-header"><?php the_title(); ?></h3>
-                <?php the_excerpt(); ?>
+                <h3 class="a-card-header">
+                  <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
+                </h3>
               </div>
-
-            </a>
+              <div class="m-card-footer">
+                <span class="m-card-text"><?php the_excerpt(); ?></span>
+              </div>
+            </div>
           </article>
 
         <?php

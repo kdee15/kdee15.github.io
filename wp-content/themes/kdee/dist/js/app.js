@@ -479,6 +479,24 @@ function initScrollFunctions() {
 
 // A.4. STICKY BLOCK --------------------------------------------------------------------------------------------------
 
+  var targets = document.querySelectorAll('.blog-card')
+
+  for (var iT = 0; iT < targets.length; iT++) {
+    var textElem = targets[iT];
+    var tl2 = gsap.timeline({
+      defaults: {duration: 4},
+      scrollTrigger: {
+        trigger: textElem,
+        scrub: true,
+        start: "top bottom",
+        end: "top 25vh",
+        pinSpacing: true,
+      }
+    })
+      // .fromTo(textElem, {y: 20}, {y: -90})
+      // .fromTo(textElem, {scale: 1.1}, {scale: 1})
+      // .fromTo(textElem, {opacity: 1}, {opacity: 0})
+  }
 
 
 // A.4. END -----------------------------------------------------------------------------------------------------------

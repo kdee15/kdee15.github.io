@@ -1,10 +1,10 @@
 <?php
-/**
+/*
  * The main template file
  *
  * @package WordPress
- * @subpackage Spartan
- * @since Spartan 1.0
+ * @subpackage KDee
+ * @since KDee 1.0
  */
 
 get_header();
@@ -268,7 +268,7 @@ get_header();
   .demo-tab:hover .m-icon .a-icon path { fill: <?php the_field('color_1') ?>; }
   .demo-tab:hover .a-icon-text { color: <?php the_field('color_1') ?>; }
   .owl-carousel .owl-dots .owl-dot.active span { background: <?php the_field('color_1') ?>; }
-  .owl-carousel .owl-nav button span { background: <?php the_field('color_1') ?>; }
+  /*.owl-carousel .owl-nav button span { background: */<?php //the_field('color_1') ?>/*; }*/
 </style>
 
 <!-- D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++ -->
