@@ -39,8 +39,8 @@
         ul { color: white; }
       }
       &.date { display: flex; align-items: center;
-        .a-title { flex: 1; margin: 0; padding: 0; font-size: 14px; color: white; }
-        .a-detail { flex: 3; margin: 0; padding: 0; font-size: 14px; color: white; }
+        .a-title { flex: 1; margin: 0; padding: 0; color: white; }
+        .a-detail { flex: 3; margin: 0; padding: 0; color: white; }
         &.date-start { background-color: $kd-blue; max-height: 50px; padding: 0 0 0 15px; }
         &.date-end { background-color: $kd-blue; max-height: 50px; padding: 0 0 0 15px; }
       }

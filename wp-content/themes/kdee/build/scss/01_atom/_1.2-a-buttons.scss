@@ -179,7 +179,7 @@ $radius-lrg:              15px;
 
 // A.5. PROPERTY DETAILS BACK/PREV/NEXT BUTTONS -----------
 
-.btn-back { display: block; position: relative; font-size: 14px; line-height: 24px; color: $btn-default-clr;
+.btn-back { display: block; position: relative; color: $btn-default-clr;
 
   /* button with arrow to the left */
   &.btn-left { padding-left: 34px; float: left;
@@ -200,7 +200,7 @@ $radius-lrg:              15px;
   }
 }
 
-.btn-fwd { display: block; position: relative; font-size: 14px; line-height: 24px; color: $btn-default-clr;
+.btn-fwd { display: block; position: relative; color: $btn-default-clr;
 
   /* button with arrow to the right */
   &.btn-right { padding-right: 34px; float: right;

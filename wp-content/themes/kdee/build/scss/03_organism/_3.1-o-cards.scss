@@ -9,8 +9,8 @@
 .card { border: 0;
   .m-card-image { margin: 0; position: relative; overflow: hidden; display: block; }
   .m-card-body {
-    .a-card-header { margin: 0; padding: 0; font-size: 14px; color: $white; text-shadow: 0 0 5px $black; }
-    .a-card-text, p { margin: 0; padding: 0; font-size: 12px; color: $white; text-shadow: 0 0 5px $black;
+    .a-card-header { margin: 0; padding: 0; }
+    .a-card-text, p { margin: 0; padding: 0;
       &.truncated { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; transition: 0.5s; }
     }
   }
@@ -86,40 +86,49 @@
 
   // A.1.1.2. BIG CARD ------------------------------------
 
-  &.big-card { height: 80vh;
-    .m-card-image { border-radius: 35px; padding: 50px; max-width: 600px; @include vertical-align(absolute);
+  $image-01: #CCC; $text-01: #CCC; $footer-01: #CCC; $bg-01: #CCC;
+  $image-02: #CCC; $text-02: #CCC; $footer-02: #CCC; $bg-02: #CCC;
+  $image-03: #CCC; $text-03: #CCC; $footer-03: #CCC; $bg-03: #CCC;
+
+  &.big-card { z-index: 1;
+    .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 5%; right: 30%; background-color: $grey-80; z-index: -1; }
+    .m-card-image {
+      border-radius: 15px; padding: 20px; width: 94%; margin: 30px auto 0; background-color: $grey-21; z-index: 10;
       img { width: 100%; }
     }
+    .m-card-body { background-color: $grey-b3;
+      .a-card-header { padding: 80px 20px 20px; margin-top: -60px;
+        a { display: block; color: white; text-decoration: none!important; }
+      }
+    }
+    .m-card-footer { padding: 20px; background-color: $grey-ce; }
 
-    &.option-1 { z-index: 1;
-      .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 30%; background-color: $grey-80; z-index: -1; }
-      .m-card-image { left: 2%; background-color: $grey-21; }
-      .m-card-body { @include vertical-align(absolute); transform: translateY(-100%); left: 60%; width: 40%; padding: 40px; background-color: $grey-b3; }
-      .m-card-footer { @include vertical-align(absolute); transform: translateY(0); left: 70%; width: 30%; padding: 40px; background-color: $grey-ce; }
+    &.option-2 {
+      .a-card-bg { right: 0; bottom: 30%; }
+      .m-card-image { background-color: $grey-21; }
+      .a-card-header { padding-bottom: 40px;
+        a { margin-left: 20%; padding-left: 10px; }
+      }
+      .m-card-footer { margin: -20px 0 0 20%; }
     }
 
-    &.option-2 { z-index: 1;
-      .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0; background-color: #777; z-index: -1; }
-      .m-card-image { right: 10%; background-color: $grey-21; z-index: 10; }
-      .m-card-body { @include vertical-align(absolute); transform: translateY(-100%); right: 50%; width: 40%; padding: 80px 40px; background-color: $grey-lt; }
-      .m-card-footer { @include vertical-align(absolute); transform: translateY(0); right: 50%; width: 30%; padding: 40px; background-color: $grey-blue; }
+    &.option-3 {
+      .a-card-bg { right: 0; left: 30%; bottom: 0; }
+      .m-card-image { background-color: $grey-21; }
+      .a-card-header { padding-bottom: 40px;
+        a { text-align: center; }
+      }
+      .m-card-footer { margin: -20px 5% 0; }
     }
 
-    &.option-3 { z-index: 1;
-      .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 30%; background-color: #777; z-index: -1; }
-      .m-card-image { left: 2%; background-color: $grey-21;  }
-      .m-card-body { @include vertical-align(absolute); transform: translateY(-100%); left: 60%; width: 40%; padding: 40px; background-color: #CCC; }
-      .m-card-footer { @include vertical-align(absolute); transform: translateY(0); left: 70%; width: 30%; padding: 40px; background-color: #EEE; }
+    &.option-4 {
+      .a-card-bg { right: 0; left: 30%; bottom: 0; }
+      .m-card-image { background-color: $grey-21; }
+      .a-card-header {
+        a { text-align: right; }
+      }
+      .m-card-footer { margin-left: 30%; }
     }
-
-    &.option-4 { z-index: 1;
-      .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 30%; background-color: #777; z-index: -1; }
-      .m-card-image { left: 2%; background-color: $grey-21;  }
-      .m-card-body { @include vertical-align(absolute); transform: translateY(-100%); left: 60%; width: 40%; padding: 40px; background-color: #000; }
-      .m-card-footer { @include vertical-align(absolute); transform: translateY(0); left: 70%; width: 30%; padding: 40px; background-color: #888; }
-    }
-
-
   }
 
   // A.1.1.2. END -----------------------------------------
@@ -142,13 +151,103 @@
 
 // C. MIN-WIDTH: 768px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($sm-up) {} 
+@media ($sm-up) {
+
+  .o-card {
+    &.big-card { min-height: 50vh;
+      .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 0; right: 0; }
+      .m-card-image { width: 50%; @include vertical-align(absolute); left: 10%; margin: 0;
+      }
+      .m-card-body { position: absolute; left: 60%; top: 40%; right: 0; padding: 40px 20px;
+        .a-card-header { margin-top: 0; padding: 0; }
+      }
+      .m-card-footer { position: absolute; top: 55%; left: 30%; bottom: 0; z-index: -1; }
+
+      &.option-1 {
+        .a-card-bg { right: 0; bottom: 0; }
+        .a-card-header { padding-bottom: 0;
+          a { margin-left: 5%; padding-left: 0; }
+        }
+        .m-card-footer { margin: 0; right: 0; padding: 10% 2% 0 34%; }
+      }
+
+      &.option-2 {
+        .a-card-bg { right: 0; bottom: 0; left: 0; }
+        .m-card-image { position: relative; top: 0; transform: none; margin: 160px 0 40px; }
+        .m-card-body { left: 15%; top: 15%; padding: 25px 50px 30px; }
+        .a-card-header { padding-bottom: 0;
+          a { margin-left: 0; padding-left: 0; text-align: left; }
+        }
+        .m-card-footer { top: 30%; left: 60%; bottom: auto; padding: 50px 30px 30px; margin: 0; right: 0; }
+      }
+
+      &.option-3 {
+        .a-card-bg { right: 0; bottom: 0; left: 0; }
+        .m-card-image { position: relative; left: 0; top: 0; transform: none; margin: 160px 10% 40px auto; }
+        .m-card-body { left: 0; top: 15%; right: 15%; padding: 25px 50px 30px; }
+        .a-card-header { padding-bottom: 0;
+          a { margin-left: 0; padding-left: 0; text-align: left; }
+        }
+        .m-card-footer { top: 30%; right: 60%; left: 0; bottom: auto; padding: 50px 30px 30px; margin: 0; }
+      }
+
+      &.option-4 {
+        .a-card-bg { right: 0; bottom: 0; left: 0; }
+        .m-card-image { right: 10%; left: auto; }
+        .m-card-body { left: 0; right: 60%; }
+        .a-card-header { padding-bottom: 0;
+          a { margin-left: 0; padding-left: 0; text-align: left; }
+        }
+        .m-card-footer { margin: 0; right: 30%; left: 0; padding: 10% 33% 0 2%; }
+      }
+    }
+  }
+
+}
 
 // C. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // D. MIN-WIDTH: 992px ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
-@media ($md-up) {} 
+@media ($md-up) {
+
+  .o-card {
+    // A.1.1.2. BIG CARD ------------------------------------
+    &.big-card { height: 80vh;
+      .m-card-image { border-radius: 35px; padding: 50px; @include vertical-align(absolute); }
+
+      &.option-1 {
+        .a-card-bg { right: 30%; }
+        .m-card-image { left: 10%; }
+        .m-card-body { top: 50%; transform: translateY(-100%); left: 60%; width: 40%; padding: 40px; }
+        .m-card-footer { top: 50%; transform: translateY(0); left: 70%; width: 30%; padding: 40px; bottom: auto; }
+      }
+
+      &.option-2 {
+        .a-card-bg { right: 10%; left: 30%; }
+        .m-card-image { left: 10%; }
+        .m-card-body { top: 50%; transform: translateY(-100%); left: 60%; width: 40%; padding: 40px; }
+        .m-card-footer { top: 50%; transform: translateY(0); left: 60%; width: 30%; padding: 40px; bottom: auto; }
+      }
+
+      &.option-3 {
+        .a-card-bg { right: 30%; left: 30%; }
+        .m-card-image { right: 10%; left: auto; @include vertical-align(absolute); margin: 0; }
+        .m-card-body { top: 50%; transform: translateY(-100%); right: 40%; width: 60%; padding: 40px; left: 0;}
+        .m-card-footer { top: 50%; transform: translateY(0); right: 40%; width: 30%; padding: 40px; left: 0; bottom: 0; }
+      }
+
+      &.option-4 {
+        .a-card-bg { }
+        .m-card-image { right: 10%; background-color: $grey-21; z-index: 10; }
+        .m-card-body { top: 50%; transform: translateY(-100%); right: 50%; width: 40%; padding: 40px; }
+        .m-card-footer { top: 50%; transform: translateY(0); right: 50%; width: 40%; padding: 40px; bottom: auto; }
+      }
+    }
+    // A.1.1.2. END -----------------------------------------
+  }
+
+}
 
 // D. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

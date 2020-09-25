@@ -32,7 +32,7 @@
                 </h3>
               </div>
               <div class="m-card-footer">
-                <span class="m-card-text"><?php the_excerpt(); ?></span>
+	              <?php the_excerpt(); ?>
               </div>
             </div>
           </article>
