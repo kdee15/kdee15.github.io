@@ -25,6 +25,11 @@
   .m-block-footer { text-align: center; background-color: $grey-f2; padding: 20px;
     .a-text-link { display: inline-block; margin: 0 auto; }
   }
+
+  &.stats-block {
+    h3 { margin-bottom: 30px; }
+    .o-skills-row { margin-bottom: 80px; }
+  }
 }
 
 // A.1. END -----------------------------------------------------------------------------------------------------------

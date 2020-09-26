@@ -552,6 +552,32 @@ function initScrollFunctions() {
   }
 
 
+  var tlStatsList = gsap.timeline({
+    defaults: {duration: 2},
+    scrollTrigger: {
+      trigger: '.m-skills-list',
+      scrub: true,
+      start: "top bottom",
+      end: "bottom top",
+      pinSpacing: true,
+      toggleClass: 'in-view',
+    }
+  })
+
+  var statsBlock = document.querySelector('.skills-block');
+  var tlStatsBlock = gsap.timeline({
+    scrollTrigger: {
+      trigger: '.skills-block',
+      scrub: true,
+      start: "top bottom",
+      end: "top center",
+      pinSpacing: true,
+    }
+  })
+
+  tlStatsBlock.to(statsBlock, { duration: 1, backgroundColor: '#FF0000', ease: "none" }, 0)
+
+
 // A.4. END -----------------------------------------------------------------------------------------------------------
 
 // A.3. SCROLL TO LINK ------------------------------------------------------------------------------------------------

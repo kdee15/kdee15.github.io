@@ -2,66 +2,21 @@
 
   <h2 class="a-block-title">{ stats }</h2>
     <div class="container">
-      <div class="row">
-        <div class="col-12 col-md-8 o-col-skills">
-	        <?php get_template_part( 'inc/skills-matrix' ); ?>
+      <div class="row o-skills-row">
+        <div class="col-12 col-md-6 col-xl-7 o-col-skills">
+	        <?php dynamic_sidebar( 'skills_widget' ); ?>
         </div>
-        <div class="col-12 col-md-4 o-col-edu">
-          <ul class="education">
-
-            <li class="employee">
-              <span class="company">User Experience Design</span>
-              <span class="role">{ University of Cape Town }</span>
-              <span class="date">2020</span>
-            </li>
-
-            <li class="employee">
-              <span class="company">Certified ScrumMaster</span>
-              <span class="role">{ Scrum Alliance }</span>
-              <span class="date">2013</span>
-            </li>
-
-            <li class="employee">
-              <span class="company">Post Graduate Diploma in Business Administration (NQF7)</span>
-              <span class="role">{ UCT Graduate School of Business }</span>
-              <span class="date">2012</span>
-            </li>
-
-            <li class="employee">
-              <span class="company">Associate in Management (NQF4)</span>
-              <span class="role">{ UCT Graduate School of Business }</span>
-              <span class="date">2008</span>
-            </li>
-
-            <li class="employee">
-              <span class="company">National Diploma in Industrial Design</span>
-              <span class="role">{ CPUT }</span>
-              <span class="date">1993 <> 1996</span>
-            </li>
-
-            <li class="employee">
-              <span class="company">Fine Art Bridging (N4)</span>
-              <span class="role">{ Cape Town Technical College }</span>
-              <span class="date">1992</span>
-            </li>
-
-            <li class="employee">
-              <span class="company">Life Drawing &amp; Water Colour Illustration</span>
-              <span class="role">{ Ruth Prowse Art School }</span>
-              <span class="date">1992</span>
-            </li>
-
-            <li class="employee">
-              <span class="company">Matric</span>
-              <span class="role">{ CBC Athlone (St Columba’s High School) }</span>
-              <span class="date">1991</span>
-            </li>
-
-          </ul>
+        <div class="col-12 col-md-6 col-xl-4 offset-xl-1 o-col-edu">
+            <h3>/* education */</h3>
+            <?php dynamic_sidebar( 'edu_widget' ); ?>
         </div>
       </div>
-      <div class="row">
-        <div class="col-12 col-md-5 o-col-docs">
+      <div class="row o-education-row">
+        <div class="col-12 col-md-9 o-col-career">
+          <h3>/* experience */</h3>
+	        <?php dynamic_sidebar( 'experience_widget' ); ?>
+        </div>
+        <div class="col-12 col-md-3 o-col-docs">
           <ul class="docs grid">
 
             <li class="cv col-6">
@@ -121,52 +76,6 @@
             </li>
 
           </ul>
-        </div>
-        <div class="col-12 col-md-7 o-col-career">
-          <ul class="career">
-            <li class="employee">
-              <span class="company">Lab Digital Agency</span>
-              <span class="role">{ Senior Frontend Developer }</span>
-              <span class="date">August 2016 &#9679;&#9679; present</span>
-            </li>
-            <li class="employee">
-              <span class="company">Forge Technologies</span>
-              <span class="role">{ Senior Frontend Developer and Development Team Leader }</span>
-              <span class="date">May 2015 &#9679;&#9679; July 2016</span>
-            </li>
-            <li class="employee">
-              <span class="company">Omni Studio</span>
-              <span class="role">{ Frontend Developer }</span>
-              <span class="date">Apr 2014 &#9679;&#9679; May 2015</span>
-            </li>
-            <li class="employee">
-              <span class="company">EOH Microsoft Coastal</span>
-              <span class="role">{ Frontend Developer }</span>
-              <span class="date">Jan 2012 &#9679;&#9679; Mar 2014</span>
-            </li>
-            <li class="employee">
-              <span class="company">Airborne Technologies</span>
-              <span class="role">{ Frontend Developer }</span>
-              <span class="date">Oct 2009 &#9679;&#9679; Jan 2012</span>
-            </li>
-            <li class="employee">
-              <span class="company">DFA Solutions</span>
-              <span class="role">{ Web Developer, Digital Designer and Development Team Leader }</span>
-              <span class="date">Jun 2008 &#9679;&#9679; Sep 2009</span>
-            </li>
-            <li class="employee">
-              <span class="company">NetraLink Development Services</span>
-              <span class="role">{ Web Developer and Business Owner }</span>
-              <span class="date">Feb 2006 &#9679;&#9679; May 2008</span>
-            </li>
-            <li class="employee">
-              <span class="company">NetraLink ISP</span>
-              <span class="role">{ Branch Manager, Development Department Manager and Web Developer }</span>
-              <span class="date">Jun 1999 &#9679;&#9679; Jan 2006</span>
-            </li>
-
-          </ul>
-
         </div>
       </div>
     </div>

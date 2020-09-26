@@ -42,13 +42,13 @@ add_action( 'widgets_init', 'social_sidebar_widgets_init' );
 
 // A.1.0.1. END
 
-// A.1.0.1. REGISTER SIDEBAR
+// A.1.0.1. SKIKLLS PAGE WIDGETS --------------------------
 
-function page_loader_widgets_init() {
+function skills_widgets_init() {
 
   register_sidebar( array(
-    'name' => 'page loader widget',
-    'id' => 'page_loader',
+    'name' => 'Skills Widget',
+    'id' => 'skills_widget',
     'before_widget' => '<div>',
     'after_widget' => '</div>',
     'before_title' => '',
@@ -56,9 +56,37 @@ function page_loader_widgets_init() {
   ) );
 }
 
-add_action( 'widgets_init', 'page_loader_widgets_init' );
+add_action( 'widgets_init', 'skills_widgets_init' );
 
-// A.1.0.1. END
+function edu_widgets_init() {
+
+  register_sidebar( array(
+    'name' => 'Education Widget',
+    'id' => 'edu_widget',
+    'before_widget' => '<div>',
+    'after_widget' => '</div>',
+    'before_title' => '',
+    'after_title' => '',
+  ) );
+}
+
+add_action( 'widgets_init', 'edu_widgets_init' );
+
+function experience_widgets_init() {
+
+  register_sidebar( array(
+    'name' => 'Work Experience Widget',
+    'id' => 'experience_widget',
+    'before_widget' => '<div>',
+    'after_widget' => '</div>',
+    'before_title' => '',
+    'after_title' => '',
+  ) );
+}
+
+add_action( 'widgets_init', 'experience_widgets_init' );
+
+// A.1.0.1. END -------------------------------------------
 
 // A.1.0.2. Twitter Widget
 
@@ -74,7 +102,7 @@ function arphabet_widgets_init() {
 
 add_action( 'widgets_init', 'arphabet_widgets_init' );
 
-// A.1.0.2. Twitter Widget
+// A.1.0.2. END
 
 // A.3 END ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 

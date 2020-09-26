@@ -127,11 +127,11 @@
     </figure> <span class="a-skill-text">4<span class="a-skill-name">Adobe Photoshop</span></span>
   </li>
   <li class="m-skill-item">
-    <figure class="a-skill level-2">
+    <figure class="a-skill level-3">
       <svg class="skill-svg" data-name="skill-svg" viewBox="0 0 100 100">
         <circle class="skill-circle" cx="50" cy="50" r="25" />
       </svg>
-    </figure> <span class="a-skill-text">2<span class="a-skill-name">Adobe XD</span></span>
+    </figure> <span class="a-skill-text">3<span class="a-skill-name">Adobe XD</span></span>
   </li>
   <li class="m-skill-item">
     <figure class="a-skill level-4">
@@ -141,4 +141,3 @@
     </figure> <span class="a-skill-text">4<span class="a-skill-name">Sketch</span></span>
   </li>
 </ul>
-                                
