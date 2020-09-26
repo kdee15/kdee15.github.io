@@ -54,6 +54,10 @@ body {
 
 .nocomments { display: none; }
 
+.a-text-link { font-weight: 500; @include link-accent($grey-21, $kd-blue, block, -4px); }
+
+img { max-width: 100%; height: auto; }
+
 // A.3. END -----------------------------------------------
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

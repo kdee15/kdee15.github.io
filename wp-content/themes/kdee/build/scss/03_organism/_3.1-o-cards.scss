@@ -86,22 +86,28 @@
 
   // A.1.1.2. BIG CARD ------------------------------------
 
-  $image-01: #CCC; $text-01: #CCC; $footer-01: #CCC; $bg-01: #CCC;
-  $image-02: #CCC; $text-02: #CCC; $footer-02: #CCC; $bg-02: #CCC;
-  $image-03: #CCC; $text-03: #CCC; $footer-03: #CCC; $bg-03: #CCC;
-
-  &.big-card { z-index: 1;
-    .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 5%; right: 30%; background-color: $grey-80; z-index: -1; }
-    .m-card-image {
-      border-radius: 15px; padding: 20px; width: 94%; margin: 30px auto 0; background-color: $grey-21; z-index: 10;
+  &.big-card { z-index: 1; background-color: $grey-f2;
+    .a-card-bg { content: ''; position: absolute; top: 0; left: 0; bottom: 5%; right: 30%; z-index: -1; background-color: $grey-ce; }
+    .m-card-image { border-radius: 15px; padding: 20px; width: 94%; margin: 30px auto 0; z-index: 10; background-color: $grey-21;
       img { width: 100%; }
     }
-    .m-card-body { background-color: $grey-b3;
-      .a-card-header { padding: 80px 20px 20px; margin-top: -60px;
-        a { display: block; color: white; text-decoration: none!important; }
-      }
+    .m-card-body { background-color: $kd-blue;
+      .a-card-header { padding: 80px 20px 20px; margin-top: -60px; }
     }
-    .m-card-footer { padding: 20px; background-color: $grey-ce; }
+    .m-card-footer { padding: 20px; background-color: $grey-b3;
+      p { margin: 0; padding: 0; }
+      .a-card-link { @include link-accent($grey-21, white, block, -3px); }
+    }
+
+    &.option-1 {
+      .a-card-bg { }
+      .m-card-image { }
+      .m-card-body { }
+      .a-card-header { padding-bottom: 40px;
+        a { margin-left: 20%; padding-left: 10px; }
+      }
+      .m-card-footer { margin: -20px 0 0 20%; }
+    }
 
     &.option-2 {
       .a-card-bg { right: 0; bottom: 30%; }
@@ -132,6 +138,23 @@
   }
 
   // A.1.1.2. END -----------------------------------------
+
+  // A.1.1.3. MEDIUM CARD ---------------------------------
+
+  &.medium-card {
+    &.link-card { text-decoration: none!important; display: block; height: 100%; margin-bottom: 40px;
+      .a-card-bg { @include position(absolute, 0); background-color: $grey-f2; }
+      .m-card-image { z-index: 100; @include aspect-ratio(100%, 56.6%); background-size: cover; background-color: $kd-blue; }
+      .m-card-body { background-color: $grey-ce; position: relative; z-index: 10;
+        .a-card-header { padding: 80px 20px 20px; margin-top: -60px; color: $grey-21; }
+      }
+      .m-card-footer { padding: 20px; background-color: $grey-f2;
+        p { margin: 0; padding: 0; color: $grey-80; }
+      }
+    }
+  }
+
+  // A.1.1.3. END -----------------------------------------
 
 }
 
@@ -215,6 +238,7 @@
     // A.1.1.2. BIG CARD ------------------------------------
     &.big-card { height: 80vh;
       .m-card-image { border-radius: 35px; padding: 50px; @include vertical-align(absolute); }
+      .a-card-link { display: inline-block; margin-top: 15px; }
 
       &.option-1 {
         .a-card-bg { right: 30%; }

@@ -160,6 +160,40 @@
 
 // E.1. END -----------------------------------------------
 
+// E.2. TEXT LINK UNDERLINE -------------------------------
+
+@mixin link-accent ($a-color, $h-color, $show, $distance ) {
+
+    position: relative; color: $a-color; text-decoration: none!important;
+
+    &:before {
+        content: '';
+        display: $show;
+        @include center-align();
+        position: absolute;
+        width: 100%;
+        bottom: $distance;
+        height: 2px;
+        background-color: $a-color;
+    }
+    &:after {
+        content: '';
+        @include center-align();
+        position: absolute;
+        width: 0%;
+        bottom: $distance;
+        height: 2px;
+        background-color: $h-color;
+        transition: 0.3s;
+    }
+    &:hover { color: $h-color;
+        &:after { width: 102%; transition: 0.3s; }
+    }
+
+}
+
+// E.2. END -----------------------------------------------
+
 // E. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // END OF FILE ########################################################################################################

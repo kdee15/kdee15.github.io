@@ -14,6 +14,113 @@
 // A.1. END -----------------------------------------------
 
 
+// A.1. END -----------------------------------------------
+
+@keyframes anim-1 {
+  0%      { stroke-dasharray: 117.75 157; }
+  100%    { stroke-dasharray: 157 157; }
+}
+
+@keyframes anim-2 {
+  0%      { stroke-dasharray: 78.5 78.5; }
+  100%    { stroke-dasharray: 156.7 78.5; }
+}
+
+@keyframes anim-3 {
+  0%      { stroke-dasharray: 39.5 117.5; }
+  100%    { stroke-dasharray: 156.7 117.5; }
+}
+
+@keyframes anim-4 {
+  0%      { stroke-dasharray: 0 157; }
+  100%    { stroke-dasharray: 156.7 157; }
+}
+
+@keyframes pop {
+  0% { opacity: 0; transform: scale(0); }
+  100% { opacity: 1; transform: scale(1); }
+}
+
+.m-skills-list {
+  .m-skill-item { animation: pop 1s cubic-bezier(.64,.64,.76,1.26) both;
+    @for $i from 1 through 20 {
+      &:nth-child(#{$i}){ animation-delay: $i * (2s / 20);
+        .a-skill {
+          .skill-circle { animation-delay: $i * (2s / 20); }
+        }
+      }
+    }
+
+    .a-skill {
+      &.level-1 {
+        .skill-circle { animation: anim-1 1s linear 0.3s reverse; }
+      }
+      &.level-2 {
+        .skill-circle { animation: anim-2 1s linear 0.3s reverse; }
+      }
+      &.level-3 {
+        .skill-circle { animation: anim-3 1s linear 0.3s reverse; }
+      }
+      &.level-4 {
+        .skill-circle { animation: anim-4 1s linear 0.3s reverse; }
+      }
+    }
+  }
+}
+
+
+.m-skills-list { list-style-type: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap;
+  .m-skill-item { @include aspect-ratio(20%, 100%); cursor: pointer; transform: scale(0); opacity: 0;
+    .a-skill-text { @include middle-align(); font-size: 30px; color: white; line-height: 1; text-align: center;
+      .a-skill-name { font-size: 12px; display: block; }
+    }
+    .a-skill { @include position(absolute, 5%); margin: 0; padding: 0; background-color: $kd-blue; border-radius: 100%;
+
+      &.level-1 {
+        .skill-circle { stroke-dasharray: 117.75 157; }
+      }
+      &.level-2 {
+        .skill-circle { stroke-dasharray: 78.5 78.5; }
+      }
+      &.level-3 {
+        .skill-circle { stroke-dasharray: 39.5 117.5; }
+      }
+      &.level-4 {
+        .skill-circle { stroke-dasharray: 0 157; }
+      }
+
+      .skill-svg {
+        .skill-circle { stroke: $grey-80; fill: none; stroke-width: 50; }
+      }
+    }
+
+    &:hover {
+      .a-skill {
+        &.level-1 {
+          .skill-circle { animation: anim-1 1s linear 0.3s alternate infinite; }
+        }
+        &.level-2 {
+          .skill-circle { animation: anim-2 1s linear 0.3s alternate infinite; }
+        }
+        &.level-3 {
+          .skill-circle { animation: anim-3 1s linear 0.3s alternate infinite; }
+        }
+        &.level-4 {
+          .skill-circle { animation: anim-4 1s linear 0.3s alternate infinite; }
+        }
+      }
+    }
+  }
+
+}
+
+
+
+
+
+// A.1. END -----------------------------------------------
+
+
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // END OF FILE ########################################################################################################

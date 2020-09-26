@@ -479,23 +479,76 @@ function initScrollFunctions() {
 
 // A.4. STICKY BLOCK --------------------------------------------------------------------------------------------------
 
-  var targets = document.querySelectorAll('.blog-card')
+  gsap.registerPlugin(ScrollTrigger);
 
-  for (var iT = 0; iT < targets.length; iT++) {
-    var textElem = targets[iT];
-    var tl2 = gsap.timeline({
+  var elemCardBGs = document.querySelectorAll('.a-card-bg, .m-card-footer')
+
+  for (var iT = 0; iT < elemCardBGs.length; iT++) {
+    var elemCardBG = elemCardBGs[iT];
+    var tl1 = gsap.timeline({
       defaults: {duration: 4},
       scrollTrigger: {
-        trigger: textElem,
+        trigger: elemCardBG,
         scrub: true,
         start: "top bottom",
-        end: "top 25vh",
+        end: "top center",
         pinSpacing: true,
       }
     })
-      // .fromTo(textElem, {y: 20}, {y: -90})
-      // .fromTo(textElem, {scale: 1.1}, {scale: 1})
-      // .fromTo(textElem, {opacity: 1}, {opacity: 0})
+      .from(elemCardBG, {y: 80})
+      .fromTo(elemCardBG, {opacity: 0}, {opacity: 1})
+
+  }
+
+  var elemCardPics = document.querySelectorAll('.m-card-image, .m-card-body')
+
+  for (var i2 = 0; i2 < elemCardPics.length; i2++) {
+    var elemCardPic = elemCardPics[i2];
+    var tl2 = gsap.timeline({
+      defaults: {duration: 2},
+      scrollTrigger: {
+        trigger: elemCardPic,
+        scrub: true,
+        start: "top bottom",
+        end: "top center",
+        pinSpacing: true,
+      }
+    })
+      .fromTo(elemCardPic, {opacity: 0}, {opacity: 1})
+  }
+
+  var elemCardTitles = document.querySelectorAll('.a-card-header, .m-text-wrapper')
+
+  for (var i3 = 0; i3 < elemCardTitles.length; i3++) {
+    var elemCardTitle = elemCardTitles[i3];
+    var tl3 = gsap.timeline({
+      defaults: {duration: 2},
+      scrollTrigger: {
+        trigger: elemCardTitle,
+        scrub: true,
+        start: "top bottom",
+        end: "top center",
+        pinSpacing: true,
+      }
+    })
+      .fromTo(elemCardTitle, {x: -100}, {x: 0})
+  }
+
+  var elemCardLinks = document.querySelectorAll('.a-card-link')
+
+  for (var i4 = 0; i4 < elemCardLinks.length; i4++) {
+    var elemCardLink = elemCardLinks[i4];
+    var tl4 = gsap.timeline({
+      defaults: {duration: 2},
+      scrollTrigger: {
+        trigger: elemCardLink,
+        scrub: true,
+        start: "top bottom",
+        end: "top center",
+        pinSpacing: true,
+      }
+    })
+      .fromTo(elemCardLink, {y: 50}, {y: 0})
   }
 
 

@@ -27,12 +27,12 @@
                 <img src="<?php the_field('cover_desk') ?>">
               </figure>
               <div class="m-card-body">
-                <h3 class="a-card-header">
-                  <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-                </h3>
+                <h3 class="a-card-header">{&nbsp;<?php the_title(); ?>&nbsp;}</h3>
               </div>
               <div class="m-card-footer">
-	              <?php the_excerpt(); ?>
+                  <div class="m-text-wrapper"><?php the_excerpt(); ?></div>
+
+                <a class="a-card-link" href="<?php the_permalink() ?>">see project ...</a>
               </div>
             </div>
           </article>
@@ -45,8 +45,10 @@
       ?>
 
     </div>
+    <div class="row m-block-footer">
+      <a class="a-text-link" href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=26"> << VIEW MORE PROJECTS >> </a>
+    </div>
 
-    <a class="a-btn btn-blue" href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=26">VIEW MORE PROJECTS</a>
 
   </div>
 

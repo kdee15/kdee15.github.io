@@ -15,7 +15,7 @@ get_header(); ?>
       <h2 class="a-block-title">{ projects }</h2>
 
       <div class="container-fluid">
-        <div class="row no-gutters">
+        <div class="row">
 
           <?php
 
@@ -32,21 +32,18 @@ get_header(); ?>
           if( $my_query->have_posts() ) {
             while ($my_query->have_posts()) : $my_query->the_post(); ?>
 
-              <article class="card blog-card col-12">
-                <div class="o-card big-card option-<?php echo rand(1,4); ?>">
+              <article class="card blog-card col-12 col-md-6 col-lg-4">
+                <a href="<?php the_permalink() ?>" class="o-card medium-card link-card option-<?php echo rand(1,4); ?>">
                   <div class="a-card-bg"></div>
-                  <figure class="m-card-image">
-                    <img src="<?php the_field('cover_desk') ?>">
+                  <figure class="m-card-image" style="background-image: url('<?php the_field('cover_desk') ?>');">
                   </figure>
                   <div class="m-card-body">
-                    <h3 class="a-card-header">
-                      <a href="<?php the_permalink() ?>"><?php the_title(); ?></a>
-                    </h3>
+                    <h4 class="a-card-header">{&nbsp;<?php the_title(); ?>&nbsp;}</h4>
                   </div>
                   <div class="m-card-footer">
-		              <?php the_excerpt(); ?>
+                    <div class="m-text-wrapper"><?php the_excerpt(); ?></div>
                   </div>
-                </div>
+                </a>
               </article>
 
             <?php
