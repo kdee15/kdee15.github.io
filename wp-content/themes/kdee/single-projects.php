@@ -109,7 +109,7 @@ get_header();
 
   <div class="o-tab slide-content on" id="details">
     <div class="m-detail date date-start" style="background-color:<?php the_field('color_1') ?>">
-      <h4 class="a-title">Start date</h4>
+      <h4 class="a-title fnt-16">Start date</h4>
       <p class="a-detail"><?php the_field('start_date') ?></p>
     </div>
     <div class="m-detail project-info">
@@ -121,7 +121,7 @@ get_header();
       <p class="a-detail"><?php the_field('my_role') ?></p>
     </div>
     <div class="m-detail date date-end" style="background-color:<?php the_field('color_1') ?>">
-      <h4 class="a-title">End date</h4>
+      <h4 class="a-title fnt-16">End date</h4>
       <p class="a-detail"><?php the_field('end_date') ?></p>
     </div>
   </div>

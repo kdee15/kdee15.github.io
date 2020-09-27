@@ -38,6 +38,16 @@ p, .fnt-md, .fnt-md *, a {
   line-height: calc( 20px + (26 - 20) * ((100vw - 320px) / (1440 - 320)));
   letter-spacing: 1.25px; }
 
+.fnt-16, .fnt-16 * {
+  font-size: calc( 14px + (16 - 14) * ((100vw - 320px) / (1440 - 320)));
+  line-height: calc( 14px + (16 - 14) * ((100vw - 320px) / (1440 - 320)));
+  letter-spacing: 1.25px; }
+
+.fnt-16f, .fnt-16f * {
+  font-size: 16px;
+  line-height: normal;
+  letter-spacing: 1.25px; }
+
 .fnt-13, .fnt-13 * {
   font-size: calc( 10px + (13 - 10) * ((100vw - 320px) / (1440 - 320)));
   line-height: calc( 14px + (16 - 14) * ((100vw - 320px) / (1440 - 320)));
@@ -1899,6 +1909,8 @@ img {
     max-width: 1200px; } }
 
 @media (min-width: 1200px) {
+  .o-tab.slide-content .m-detail.date .a-detail {
+    flex: 6; }
   #demo-desk .owl-carousel .owl-item img {
     width: 100%; } }
 

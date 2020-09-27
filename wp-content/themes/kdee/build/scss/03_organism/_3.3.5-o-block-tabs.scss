@@ -157,6 +157,16 @@
 
 @media ($lg-up) {
 
+  .o-tab {
+    &.slide-content {
+      .m-detail {
+        &.date {
+          .a-detail { flex: 6; }
+        }
+      }
+    }
+  }
+
   // A.1. PROJECT CAROUSELS -------------------------------
 
   #demo-desk {

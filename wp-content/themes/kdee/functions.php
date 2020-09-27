@@ -44,6 +44,24 @@ add_action( 'widgets_init', 'social_sidebar_widgets_init' );
 
 // A.1.0.1. SKIKLLS PAGE WIDGETS --------------------------
 
+function about_widgets_init() {
+
+  register_sidebar( array(
+    'name' => 'About Me Widget',
+    'id' => 'about_widget',
+    'before_widget' => '<div class="o-widget-about">',
+    'after_widget' => '</div>',
+    'before_title' => '',
+    'after_title' => '',
+  ) );
+}
+
+add_action( 'widgets_init', 'about_widgets_init' );
+
+// A.1.0.1. END -------------------------------------------
+
+// A.1.0.2. SKIKLLS PAGE WIDGETS --------------------------
+
 function skills_widgets_init() {
 
   register_sidebar( array(
@@ -86,7 +104,7 @@ function experience_widgets_init() {
 
 add_action( 'widgets_init', 'experience_widgets_init' );
 
-// A.1.0.1. END -------------------------------------------
+// A.1.0.2. END -------------------------------------------
 
 // A.1.0.2. Twitter Widget
 
