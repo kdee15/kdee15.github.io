@@ -102,6 +102,25 @@ p, .fnt-md, .fnt-md *, a {
 }
 // p END --------------------
 
+// fnt-13f ------------------
+$fnt-13-min-xs: 10; // minimum font size at smallest screen size
+$fnt-13-max-md: 13; // maximum font size at largest screen size
+$fnt-13-max:    13; // failsafe for larger screens
+
+$lh-13-min-xs: 14; // minimum line height at smallest screen size
+$lh-13-max-md: 16; // maximum line height at largest screen size
+$lh-13-max:    16; // failsafe for larger screens
+
+.fnt-13, .fnt-13 * {
+  font-size: calc( #{$fnt-13-min-xs}px + (#{$fnt-13-max-md} - #{$fnt-13-min-xs}) * ((100vw - #{$view-min-xs}px) / (#{$view-max-md} - #{$view-min-xs})));
+  line-height: calc( #{$lh-13-min-xs}px + (#{$lh-13-max-md} - #{$lh-13-min-xs}) * ((100vw - #{$view-min-xs}px) / (#{$view-max-md} - #{$view-min-xs})));
+  letter-spacing: 1.25px;
+}
+
+.fnt-13f, .fnt-13f * { font-size: 13px; line-height: normal; letter-spacing: 1.25px; }
+
+// fnt-13f END --------------
+
 // A.2.2. END ---------------------------------------------
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

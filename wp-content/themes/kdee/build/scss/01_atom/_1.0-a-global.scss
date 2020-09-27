@@ -27,8 +27,6 @@ body {
   }
 }
 
-.p-main { height: 100%; }
-
 .slide-content {
   @include position(absolute,0); background-color: rgba(0,0,0,0.96); transform: translateY(100%); transition: 0.3s;
   &.on { transform: translateY(0%); transition: 0.3s; }

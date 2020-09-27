@@ -17,13 +17,11 @@ body.single {
 // A.2. HOMEPAGE ------------------------------------------------------------------------------------------------------
 
 html,
-body.home { height: 100%;
+body.home {
   &.blog {
 
-    #o-header {  }
-
-    .p-main { height: 100%;
-      .o-header { height: 100%; position: relative; }
+    .p-main {
+      .o-header { position: relative; height: 100vh; }
 
       .o-block {
         &.blog-posts { margin-top: $base;

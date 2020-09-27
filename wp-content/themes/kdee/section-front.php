@@ -1,4 +1,4 @@
-<section class="o-header o-home-header h-100">
+<section class="o-header o-home-header">
 
   <!-- C.1. PAGE HEADER --------------------------------- -->
 

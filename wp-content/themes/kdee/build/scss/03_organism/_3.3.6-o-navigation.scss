@@ -4,7 +4,7 @@
 
 // A.1. GENERAL CARDS -------------------------------------------------------------------------------------------------
 
-.o-navigation { position: relative; width: 50px; height: 50px; max-width: 350px; margin: 0 auto; transition: 0.3s;
+.o-navigation { position: relative; width: 50px; height: 50px; max-width: 380px; margin: 0 auto; transition: 0.3s;
   &.on { width: 100%; transition: 0.3s; }
   .o-hamburger { transition: 0.3s;
     &.on { bottom: auto; top: 50%; transform: translateY(-50%); right: 10px; left: auto; transition: 0.3s; height: 24px;
@@ -13,13 +13,13 @@
       }
     }
   }
-  .o-wrapper { @include center-align();  overflow: hidden; width: 0; transition: 0.3s; background-color: white;
-    &.on { width: 100%; transition: 0.3s; border-radius: 3px; }
+  .o-wrapper { @include center-align();  overflow: hidden; width: 0; transition: 0.3s; background-color: white; opacity: 0; padding-right: 50px;
+    &.on { width: 100%; transition: 0.3s; border-radius: 3px; opacity: 1; }
   }
   .o-nav-list {
-    list-style-type: none; display: inline-block; margin: 0; padding: 0; white-space: nowrap; width: 100%;
-    .m-list-item { display: inline-block;
-      a { display: block; line-height: 50px; padding: 0 10px; text-decoration: none;
+    list-style-type: none; display: flex; margin: 0; padding: 0; white-space: nowrap; width: 100%;
+    .m-list-item { flex: 1 0 0;
+      a { display: block; line-height: 50px; padding: 0 10px; text-decoration: none; letter-spacing: normal;
         &.active,
         &:hover { background-color: $kd-blue; color: white; }
       }

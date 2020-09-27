@@ -8,6 +8,7 @@ function initScrollFunctions() {
 
   gsap.registerPlugin(ScrollTrigger);
 
+  // A.4.1. PROJECT CARD EFFECTS --------------------------
   var elemCardBGs = document.querySelectorAll('.a-card-bg, .m-card-footer')
 
   for (var iT = 0; iT < elemCardBGs.length; iT++) {
@@ -78,6 +79,8 @@ function initScrollFunctions() {
       .fromTo(elemCardLink, {y: 50}, {y: 0})
   }
 
+  // A.4.1. END -------------------------------------------
+  // A.4.2. STATS BLOCK EFFECTS ---------------------------
 
   var tlStatsList = gsap.timeline({
     defaults: {duration: 2},
@@ -91,19 +94,43 @@ function initScrollFunctions() {
     }
   })
 
-  var statsBlock = document.querySelector('.skills-block');
-  var tlStatsBlock = gsap.timeline({
+  gsap.timeline({
+    defaults: {duration: 5},
     scrollTrigger: {
-      trigger: '.skills-block',
+      trigger: '.a-overlay',
       scrub: true,
-      start: "top bottom",
-      end: "top center",
-      pinSpacing: true,
+      start: "top top",
+      end: "center top"
     }
   })
 
-  tlStatsBlock.to(statsBlock, { duration: 1, backgroundColor: '#FF0000', ease: "none" }, 0)
+    .fromTo('.a-overlay', {opacity: 0}, {opacity: 1})
 
+  if($(window).width() < 768) {
+    $('.m-education-list, .a-edu-title').addClass('color-switch');
+  }
+
+  $(window).resize(function() {
+    $('.m-education-list, .a-edu-title').removeClass('color-switch');
+    if($(window).width() < 768) {
+      $('.m-education-list, .a-edu-title').addClass('color-switch');
+    }
+  });
+
+  gsap.timeline({
+    defaults: {duration: 5},
+    scrollTrigger: {
+      trigger: '.color-switch',
+      scrub: true,
+      start: "top bottom",
+      end: "top center"
+    }
+  })
+
+    .to('.color-switch', {color: 'white'})
+    .to('.path-cs', {fill: 'white'})
+
+  // A.4.2. END -------------------------------------------
 
 // A.4. END -----------------------------------------------------------------------------------------------------------
 

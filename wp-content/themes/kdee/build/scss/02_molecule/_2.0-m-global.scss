@@ -126,6 +126,21 @@
 
 // A.4. END -----------------------------------------------
 
+// A.5. DOCUMENTS -----------------------------------------
+
+.m-doc-list { margin: 0; padding: 0; list-style-type: none;
+  .doc-item { width: 50%; float: left;
+    a { text-decoration: none!important; text-align: center;
+      .figure-icon { margin: 0 auto; max-width: 80px;
+        svg {  }
+      }
+      span { @include link-accent($grey-21, white, none, -3px); display: inline-block; margin: 0 auto; font-weight: 400; }
+    }
+  }
+}
+
+// A.5. END -----------------------------------------------
+
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
