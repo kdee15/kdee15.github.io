@@ -21,14 +21,17 @@
 // ** MySQL settings - You can get this info from your web host ** //
 /** The name of the database for WordPress */
 define('DB_NAME', 'kdee');
+//define('DB_NAME', 'kdeecrmg_web');
 
 /** MySQL database username */
 define('DB_USER', 'root');
 //define( 'DB_USER', 'dbuserstage' );
+//define( 'DB_USER', 'kdeecrmg_web' );
 
 /** MySQL database password */
 define('DB_PASSWORD', 'v1k1ng515');
 //define( 'DB_PASSWORD', 'klingon.Beast187' );
+//define( 'DB_PASSWORD', 'oPqMrKb^G%?C' );
 
 /** MySQL hostname */
 define('DB_HOST', '127.0.0.1:3306');
