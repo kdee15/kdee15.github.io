@@ -131,6 +131,13 @@ function initToggleFunctions() {
       hideSlideContent();
       showSlideContent(slideContent);
     }
+
+    if($('#details').hasClass('on')) {
+      $('.o-project-cover').addClass('on');
+    } else {
+      $('.o-project-cover').removeClass('on');
+    }
+
   });
 
   function hideSlideContent(){

@@ -20,7 +20,7 @@ get_header();
   <?php while ( have_posts() ) : the_post(); ?>
 
   <section class="o-block o-project-content">
-    <picture class="o-project-cover">
+    <picture class="o-project-cover on">
       <source class="a-cover-desk" srcset="<?php the_field('cover_desk') ?>" media="(min-width: 992px)" alt="desk cover">
       <source class="a-cover-tab" srcset="<?php the_field('cover_tab') ?>" media="(min-width: 768px)" alt="tablet cover">
       <img class="a-cover-mob" src="<?php the_field('cover_mob') ?>" alt="mobile cover">

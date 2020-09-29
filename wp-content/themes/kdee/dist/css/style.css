@@ -1802,6 +1802,9 @@ img {
     flex: 1; }
     .o-tab.slide-content .m-detail.project-info {
       flex: 2; }
+      .o-tab.slide-content .m-detail.project-info h4 {
+        padding: 0 15px;
+        color: white; }
       .o-tab.slide-content .m-detail.project-info .a-title {
         color: white;
         background: #2C2C2C;
@@ -2073,11 +2076,22 @@ body.home.blog .p-main .o-block.blog-posts {
       display: inline-block;
       vertical-align: middle; }
 
-@media (min-width: 1900px) {
-  .page.archive-projects .container {
+@media (min-width: 992px) {
+  .o-project-content {
+    display: flex;
+    height: 100vh; }
+  .o-project-cover {
     width: 100%;
-    max-width: 100%; }
-    .page.archive-projects .container .card.blog-card {
-      flex: 0 0 25%; } }
+    margin: auto 0;
+    transition: 0.3s; }
+    .o-project-cover.on {
+      width: 60%;
+      margin: auto 5% auto auto;
+      transition: 0.3s; } }
+
+@media (min-width: 1900px) {
+  .o-project-cover.on {
+    width: calc(100% - 650px);
+    margin: auto 100px auto auto; } }
 
 /*# sourceMappingURL=style.css.map */
