@@ -525,8 +525,8 @@ function initAltTextFunctions() {
   // A.2. RANDOM BACKGROUND -------------------------------
 
   var totalImages = 1;
-  // var RandomNumPath = 'http://www.kdee.co.za/wp-content/themes/kdee';
-  var RandomNumPath = 'http://staging.kdee.co.za/kdee.co.za/wp-content/themes/kdee';
+  var RandomNumPath = 'http://www.kdee.co.za/wp-content/themes/kdee';
+  // var RandomNumPath = 'http://staging.kdee.co.za/kdee.co.za/wp-content/themes/kdee';
   // var RandomNumPath = 'http://localhost/kdee/kdee.co.za/3_root/wp-content/themes/kdee';
   var RandomNum = Math.floor( Math.random() * totalImages);
 
@@ -534,7 +534,6 @@ function initAltTextFunctions() {
 
     $('.o-home-header').attr("style","background-image:url('"+ RandomNumPath +"/dist/images/background/bg-main"+RandomNum+".jpg')");
     $('.contact-block').attr("style","background-image:url('"+ RandomNumPath +"/dist/images/background/bg-contact"+RandomNum+".jpg')");
-    //$('.article').attr("style","background-image:url('../../../../../dist/images/background/bg-main"+RandomNum+".jpg')");
 
   });
 
