@@ -147,7 +147,7 @@ function projects() {
     'description'   => 'A list of Projects',
     'public'        => true,
     'menu_position' => 7,
-    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content' ),
+    'supports'      => array( 'title', 'editor', 'thumbnail', 'taxonomies', 'categories', 'media', 'content', 'excerpt' ),
     'has_archive'   => true,
 
   );

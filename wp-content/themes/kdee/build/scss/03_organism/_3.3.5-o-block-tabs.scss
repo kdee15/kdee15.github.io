@@ -34,7 +34,7 @@
 
     .m-detail { flex: 1;
       &.project-info { flex: 2;
-        h4 { padding: 0 15px; color: white; }
+        h4, h5 { padding: 0 15px; color: white; }
         .a-title { color: white; background: #2C2C2C; margin: 0 0 15px 0; padding: 10px 15px; }
         p { color: white; margin: 0 0 15px 0; padding: 0 15px; }
         ul { color: white; }
