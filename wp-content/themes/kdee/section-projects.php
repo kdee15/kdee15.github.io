@@ -24,7 +24,7 @@
             <div class="o-card big-card option-<?php echo rand(1,4); ?>">
               <div class="a-card-bg"></div>
               <figure class="m-card-image">
-                <img src="<?php the_field('cover_desk') ?>">
+                <img src="<?php the_field('cover_desk') ?>" alt="<?php the_title(); ?>" />
               </figure>
               <div class="m-card-body">
                 <h3 class="a-card-header">{&nbsp;<?php the_title(); ?>&nbsp;}</h3>
@@ -48,8 +48,5 @@
     <div class="row m-block-footer">
       <a class="a-text-link" href="<?php echo esc_url( home_url( '/' ) ); ?>?page_id=26"> << VIEW MORE PROJECTS >> </a>
     </div>
-
-
   </div>
-
 </section>

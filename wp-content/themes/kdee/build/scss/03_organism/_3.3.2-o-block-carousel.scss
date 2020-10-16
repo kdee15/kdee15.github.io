@@ -8,7 +8,8 @@
   &.home-carousel {
 
     .swiper-container { overflow-x: hidden; padding-bottom: $base-lg;
-      .swiper-wrapper { }
+      .swiper-wrapper { } 
+      .kd-why { color: red; }
     }
 
     .swiper-button {
@@ -22,7 +23,7 @@
       outline: none!important;
 
       &.swiper-button-next {
-        background-image: url('../../dist/images/site/button--arrow-right.svg'); right: 6px; left: auto;
+        background-image: url('../../dist/images/site/button--arrow-right.svg'); right: 6px; left: auto; 
       }
 
       &.swiper-button-prev {
@@ -34,7 +35,7 @@
     }
 
     .swiper-pagination {
-      .swiper-pagination-bullet { width: 16px; height: 4px; border-radius: 0;
+      .swiper-pagination-bullet { width: 16px; height: 4px; border-radius: 0; 
         &.swiper-pagination-bullet-active {  }
       }
     }

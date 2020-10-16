@@ -12,7 +12,8 @@ get_header(); ?>
 
     <section class="page archive-projects">
 
-      <h2 class="a-block-title">{ projects }</h2>
+      <h1 class="a-block-title">{ projects }</h1>
+      <a class="a-text-link" href="/">HOME</a>
 
       <div class="container-fluid">
         <div class="row">

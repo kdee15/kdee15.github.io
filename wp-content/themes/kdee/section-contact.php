@@ -19,7 +19,7 @@
     contact forms, or cell numbers<br>
     [what's a contact form, grandpa?]</p>
 
-  <a class="linked-in" href="https://za.linkedin.com/in/kirk-daniels-6049a61" target="_blank">
+  <a class="linked-in" href="https://za.linkedin.com/in/kirk-daniels-6049a61" target="_blank" rel="noreferrer">
     <figure class="linkedin logo">
       <svg version="1.1" id="logo-linkedin" class="logo" inkscape:version="0.48.0 r9654"
            sodipodi:docname="New document 4" xmlns:dc="http://purl.org/dc/elements/1.1/"

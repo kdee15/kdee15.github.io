@@ -19,7 +19,7 @@
         <div class="col-12 col-md-3 col-xl-4 o-col-docs">
           <ul class="m-doc-list">
             <li class="cv doc-item">
-              <a class="d-block" href="https://www.dropbox.com/s/9yqn384ssyam4m2/KDCV.pdf?dl=0" target="_blank">
+              <a class="d-block" rel="noreferrer" href="https://www.dropbox.com/s/9yqn384ssyam4m2/KDCV.pdf?dl=0" target="_blank">
                 <figure class="figure-icon"><svg version="1.1" id="cv" class="icon" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                                                  viewBox="-299 370.9 100 100" style="enable-background:new -299 370.9 100 100;" xml:space="preserve">
 <g>
@@ -34,7 +34,7 @@
               </a>
             </li>
             <li class="portfolio doc-item">
-              <a class="d-block" href="https://www.dropbox.com/s/wzdzny2jmebdned/Portfolio.pdf?dl=0" target="_blank">
+              <a class="d-block" rel="noreferrer" href="https://www.dropbox.com/s/wzdzny2jmebdned/Portfolio.pdf?dl=0" target="_blank">
                 <figure class="figure-icon">
                   <svg version="1.1" class="portfolio" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                        viewBox="0 0 100 100" style="enable-background:new 0 0 100 100;" xml:space="preserve">

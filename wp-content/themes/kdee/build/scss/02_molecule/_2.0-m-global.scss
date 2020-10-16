@@ -115,7 +115,7 @@
 
 // A.4. CAREER LIST ---------------------------------------
 
-.m-career-list { margin: 0; padding: 0; list-style-type: none;
+.m-career-list { margin: 0 0 50px; padding: 0; list-style-type: none;
   .employee { display: block; margin-bottom: 20px;
     .company { display: block; font-weight: 400; letter-spacing: 1.25px; }
     .role { display: block; margin-right: 20px; font-style: italic; }
@@ -131,9 +131,7 @@
 .m-doc-list { margin: 0; padding: 0; list-style-type: none;
   .doc-item { width: 50%; float: left;
     a { text-decoration: none!important; text-align: center;
-      .figure-icon { margin: 0 auto; max-width: 80px;
-        svg {  }
-      }
+      .figure-icon { margin: 0 auto; max-width: 80px; }
       span { @include link-accent($grey-21, white, none, -3px); display: inline-block; margin: 0 auto; font-weight: 400; }
     }
   }
@@ -157,15 +155,10 @@
 @media ($sm-up) {
 
   .m-skills-list {
-    .m-skill-item { width: 30%;
-      .a-skill-text {
-        .a-skill-name {}
-      }
-    }
+    .m-skill-item { width: 30%; }
   }
-
-
-
+  
+  .m-career-list { margin: 0; }
 
 }
 
@@ -176,15 +169,8 @@
 @media ($md-up) {
 
   .m-skills-list {
-    .m-skill-item { width: 25%;
-      .a-skill-text {
-        .a-skill-name {}
-      }
-    }
+    .m-skill-item { width: 25%; }
   }
-
-
-
 
 }
 
@@ -195,15 +181,8 @@
 @media ($lg-up) {
 
   .m-skills-list { margin: 0;
-    .m-skill-item { width: 20%; margin-bottom: 25px;
-      .a-skill-text {
-        .a-skill-name {}
-      }
-    }
+    .m-skill-item { width: 20%; margin-bottom: 25px; }
   }
-
-
-
 
 }
 

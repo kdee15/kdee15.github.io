@@ -6,7 +6,7 @@
     
     <div class="container">
 
-      <p class="col-12 a-credits">&copy; Copyright 2017. Site by <a href="http://www.kdee.co.za" target="_blank">KDee</a>.</p>
+      <p class="col-12 a-credits">&copy; Copyright 2017. Site by <a rel="noreferrer" href="http://www.kdee.co.za" target="_blank">KDee</a>.</p>
         
     </div>
     

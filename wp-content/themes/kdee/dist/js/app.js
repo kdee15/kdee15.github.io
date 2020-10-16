@@ -479,6 +479,25 @@ function initScrollFunctions() {
 
   // A.4.2. END -------------------------------------------
 
+
+  // A.4.2. END -------------------------------------------
+
+
+  gsap.defaults({ease: "power3"});
+  gsap.set(".page.archive-projects .blog-card", {y: 100});
+
+  ScrollTrigger.batch(".page.archive-projects .blog-card", {
+    onEnter: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: {each: 0.15, grid: [1, 3]}, overwrite: true}),
+    onLeave: batch => gsap.set(batch, {opacity: 0, y: -100, overwrite: true}),
+    onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.15, overwrite: true}),
+    onLeaveBack: batch => gsap.set(batch, {opacity: 0, y: 100, overwrite: true})
+  });
+
+  ScrollTrigger.addEventListener("refreshInit", () => gsap.set(".page.archive-projects .blog-card", {y: 0}));
+
+
+  // A.4.2. END -------------------------------------------
+
 // A.4. END -----------------------------------------------------------------------------------------------------------
 
 // A.3. SCROLL TO LINK ------------------------------------------------------------------------------------------------
@@ -517,37 +536,6 @@ function initScrollFunctions() {
 // JAVASCRIPT LAYER [APP.JS]  =========================================================================================
 
 // A. SCROLL FUNCTIONS ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
-
-function initAltTextFunctions() {
-
-  // A.1. INSTA IMAGE MANIPULATE --------------------------
-
-  $(".instagram-pics img").each(function() {
-    $(this).after('<div class="m-image-text"><p class="alt">' + $(this).attr('alt') + '</p></div>');
-    $(".o-insta-feed .clear a").addClass("a-btn btn-blue");
-  })
-
-  // A.1. END ---------------------------------------------
-
-  // A.2. RANDOM BACKGROUND -------------------------------
-
-  var totalImages = 1;
-  var RandomNumPath = 'http://www.kdee.co.za/wp-content/themes/kdee';
-  // var RandomNumPath = 'http://staging.kdee.co.za/kdee.co.za/wp-content/themes/kdee';
-  // var RandomNumPath = 'http://localhost/kdee/kdee.co.za/3_root/wp-content/themes/kdee';
-  var RandomNum = Math.floor( Math.random() * totalImages);
-
-  $(document).ready(function(){
-
-    $('.o-home-header').attr("style","background-image:url('"+ RandomNumPath +"/dist/images/background/bg-main"+RandomNum+".jpg')");
-    $('.contact-block').attr("style","background-image:url('"+ RandomNumPath +"/dist/images/background/bg-contact"+RandomNum+".jpg')");
-
-  });
-
-  // A.2. END ---------------------------------------------
-
-}
-    
 
 // A. END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 // FILE END +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++

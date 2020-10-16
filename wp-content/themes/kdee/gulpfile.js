@@ -1,80 +1,68 @@
-// GULP FILE ==========================================================================================================
+const gulp = require('gulp');
+const sass = require('gulp-sass');
+const sourcemaps = require('gulp-sourcemaps');
+const postcss = require('gulp-postcss');
+const autoprefixer = require('autoprefixer');
+const cssnano = require('cssnano');
+const concat = require('gulp-concat');
+const terser = require('gulp-terser');
+const rename = require('gulp-rename');
+const purgecss = require('gulp-purgecss');
 
-/// <binding BeforeBuild='dev-compile-css, production-minify-css' />
-var gulp = require('gulp'),
-  gulpLoadPlugins = require('gulp-load-plugins'),
-  plugins = gulpLoadPlugins();
+// Folders
+const paths = {
+    build_scss: 'build/scss/**',
+    dist_css: 'dist/css',
+    build_js: 'build/js/**',
+    dist_js: 'dist/js',
+    components_scss: 'components/**/*.scss',
+    components_js: 'components/**/*.js',
+    libraries_css: 'build/scss/libraries/*.css',
+    libraries_js: 'build/js/libraries/*.js'
+};
 
-gulp.task('dev-compile-css', function () {
-  return gulp.src(['content/build/scss/*.scss'])
-    .pipe(plugins.plumber({
-      errorHandler: function (err) {
-        plugins.notify.onError({
-          title: "Gulp error in " + err.plugin,
-          message: err.toString()
-        })(err);
-        plugins.util.beep();
-        this.emit('end');
-      }
-    }))
-    //.pipe(plugins.sourcemaps.init())
-    .pipe(plugins.sass())
-    .pipe(plugins.cleanCss())
-    //.pipe(plugins.sourcemaps.write('.'))
-    .pipe(gulp.dest('content/dist/css/'));
-});
+// Compile SCSS
+function compile_css(cb) {
+    return gulp.src([paths.libraries_css, paths.build_scss, paths.components_scss])
+    .pipe(sourcemaps.init())
+    .pipe(sass().on('error',sass.logError))
+    .pipe(concat('style.css'))
+    .pipe(gulp.dest(paths.dist_css))
+    .pipe(rename({ suffix: ".min" }))
+    .pipe(postcss([ autoprefixer(), cssnano()]))
+    .pipe(sourcemaps.write('.'))    
+    .pipe(gulp.dest(paths.dist_css));
+}
 
-gulp.task('dev-compile-js', function () {
-  return gulp.src(['content/build/js/scripts/*.js'])
-    .pipe(plugins.sourcemaps.init())
-    .pipe(plugins.concat('jquery.main.js'))
-    .pipe(plugins.sourcemaps.write('.'))
-    .pipe(gulp.dest('content/dist/js'));
-});
-
-gulp.task('production-minify-css', function () {
-  return gulp.src(['content/build/scss/*.scss'])
-    .pipe(plugins.plumber({
-      errorHandler: function (err) {
-        plugins.notify.onError({
-          title: "Gulp error in " + err.plugin,
-          message: err.toString()
-        })(err);
-        plugins.util.beep();
-        this.emit('end');
-      }
-    }))
-    .pipe(plugins.sass())
-    .pipe(plugins.cleanCss())
-    .pipe(plugins.rename({
+// Compile JS
+function compile_js(cb) {
+    return gulp.src([paths.libraries_js, paths.build_js, paths.components_js])
+    .pipe(sourcemaps.init())
+    .pipe(concat('app.js'))
+    .pipe(gulp.dest(paths.dist_js))
+    .pipe(terser())
+    .pipe(rename({
       suffix: '.min'
     }))
-    .pipe(gulp.dest('content/dist/css/'));
-});
-
-gulp.task('production-minify-js', function () {
-  return gulp.src(['content/build/js/scripts/*.js'])
-    .pipe(plugins.concat('jquery.main.js'))
-    .pipe(plugins.uglify())
-    .pipe(plugins.rename({
-      suffix: '.min'
-    }))
-    .pipe(gulp.dest('content/dist/js'));
-});
+    .pipe(sourcemaps.write('.'))
+    .pipe(gulp.dest(paths.dist_js));
+    cb();
+}
 
 
-// gulp.task('default', function () {
-//
-//   gulp.watch('content/build/scss/**/*.scss', ['dev-compile-css', 'production-minify-css']);
-//   gulp.watch('content/build/js/scripts/*', ['dev-compile-js', 'production-minify-js']);
-//
-// });
+// Watch for changes
+function watch() {
+    gulp.watch([paths.libraries_css, paths.components_scss, paths.build_scss], compile_css);
+    gulp.watch([paths.libraries_js, paths.components_js, paths.build_js], compile_js);
+}
 
-// ====== INDEX  =====================================================================================================
+// Deploy Function
+function deploy(cb) {
+    compile_css();
+    compile_js();
+    cb();
+}
 
-var requireDir = require('require-dir');
-var dir = requireDir('_gulp.tasks');
-
-// END OF FILE ========================================================================================================
-
-// END OF FILE ========================================================================================================
+// Export functions
+exports.deploy = deploy;
+exports.default = watch;

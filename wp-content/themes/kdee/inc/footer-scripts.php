@@ -3,7 +3,7 @@
     <!-- D.2. SITE -->
     <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/modernizr.min.js"></script>
     <script src="<?php bloginfo('template_url'); ?>/dist/js/libraries/html5shiv.js"></script>
-    <script src="<?php bloginfo('template_url'); ?>/dist/js/app.js"></script>
+    <script src="<?php bloginfo('template_url'); ?>/dist/js/app.min.js"></script>
 
     <!-- D.3. GOOGLE ANALYTICS -->
 

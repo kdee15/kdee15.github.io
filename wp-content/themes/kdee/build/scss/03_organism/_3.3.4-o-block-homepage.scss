@@ -6,11 +6,12 @@
 
 .o-block {
   .a-block-title { display: block; margin: 50px auto; text-align: center; }
-  &.projects-block { padding-top: 50px;
+  &.projects-block { padding-top: 50px; 
     .a-btn { margin: 30px 0 0; }
   }
 
-  &.contact-block { background: #CCC; overflow: auto; text-align: center; background-size: cover; padding: 100px 0;
+  &.contact-block {
+    background-color: #CCC; overflow: auto; text-align: center; background-size: cover; padding: 100px 0; background-image: url("../images/background/bg-contact0.jpg");
     .section-header { width: 100%; max-width: 200px; margin: 50px auto;
       .icon {
         path { fill: white; }

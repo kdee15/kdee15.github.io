@@ -132,6 +132,25 @@ function initScrollFunctions() {
 
   // A.4.2. END -------------------------------------------
 
+
+  // A.4.2. END -------------------------------------------
+
+
+  gsap.defaults({ease: "power3"});
+  gsap.set(".page.archive-projects .blog-card", {y: 100});
+
+  ScrollTrigger.batch(".page.archive-projects .blog-card", {
+    onEnter: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: {each: 0.15, grid: [1, 3]}, overwrite: true}),
+    onLeave: batch => gsap.set(batch, {opacity: 0, y: -100, overwrite: true}),
+    onEnterBack: batch => gsap.to(batch, {opacity: 1, y: 0, stagger: 0.15, overwrite: true}),
+    onLeaveBack: batch => gsap.set(batch, {opacity: 0, y: 100, overwrite: true})
+  });
+
+  ScrollTrigger.addEventListener("refreshInit", () => gsap.set(".page.archive-projects .blog-card", {y: 0}));
+
+
+  // A.4.2. END -------------------------------------------
+
 // A.4. END -----------------------------------------------------------------------------------------------------------
 
 // A.3. SCROLL TO LINK ------------------------------------------------------------------------------------------------
