@@ -22,6 +22,8 @@
     
     add_theme_support( 'post-thumbnails' );
 
+	wp_deregister_script('jquery');
+
 // A.3 TEMPLATE CUSTOMISATION +++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++
 
 // A.1.0.1. REGISTER SIDEBAR
