@@ -20,7 +20,10 @@ node_modules/
 .DS_Store
 */.DS_Store
 **/*/.DS_Store
+**/.DS_Store
 # ignore log files and databases
 *.log
 *.sql
 *.sqlite
+wp-content/themes/.DS_Store
+wp-content/themes/kdee/.DS_Store
